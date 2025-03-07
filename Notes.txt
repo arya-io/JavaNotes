@@ -1,0 +1,143 @@
+OBJECT ORIENTED PROGRAMMING:
+Language should support Abstraction, Encapsulation, Inheritance, Polymorphism, Modularity, Serialization, RTTI, Persistence, Concurrency.
+
+Static: Access Member of class without creating object.
+
+Encapsulation supports Data Hiding.
+
+The ability of any entity to work differently in different conditions is called Polymorphism.
+
+Output is always same in static/compile time polymorphism, also known as early binding.
+Output changes in dynamic/runtime polymorphism, also known as late binding.
+
+Inheritance is inheriting properties and behaviour from parent to child.
+
+Modularity means dividing the code into multiple modules.
+
+Minor Features of OOPs in Java:
+
+- Persistence: (means to persist, remain)
+Ability of an object to store the data.
+
+- Serialization:
+Storing the data and its metadata into a file.
+
+- Concurrency: (Simultaneous Behaviour, Multithreading)
+
+- Run-Time Type Identification (RTTI)
+(Parrot > Bird > Flying Object.. example)
+Ability of classes to identify the object at runtime.
+
+C and C++ supports concurrency, RTTI, therefore they are OOP Language.
+
+.NET is 100% OOP Language, because
+1. Supports OOP features.
+2. Nothing can be global, no functions and no variables.
+3. Everything should be treated as object.
+
+C and C++ has `int temp`, but it has `temp.value()`, the variable also shows behaviour.
+
+What is API?
+- Interface used by programmers to build applications.
+
+Interpreter in Java is known as JVM (Java Virtual Machine).
+
+Java was categorised into Java Standard Edition (JSE), Java Enterprise Edition (JEE) and Java Micro Edition (JME).
+The JSE defines the specifications of the Java Language along with providing support for developing consolde based, GUI based, network enabled,
+database enabled application. It is further classifiede into Java Development Kit (JDK) and Jave Runtime Environment (JRE).
+
+The JDK comprises of all the necessary tools and libraries that are required to DEVELOP, EXECUTE & DEBUG Java applications.
+The JRE comprises of the necessary tools and libraries that are required to execute a Java application on the underlined platform.
+Now it is known as Jakarta Runtime Environment as it is acquired by Eclipse now.
+The JEE defines the specifications to develop N-tier based or distributed application comprising of technologies such as servelets,
+Java Persistence API, Java Messaging Service, etc.
+The JME was used for developing applications for handheld devices, such as Mobile, Tablets, BlueRay Player, Set Top Boxes, etc.
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+JAVA Installation:
+
+Download JDK version 8: jdk-8u441-windows-x64.exe
+Download Eclipse IDE for Java Developers
+
+While installing give the path as C:\JavaSE
+
+After installing Java, run in cmd:
+javac -version {for JDK}
+java -version {for JRE}
+
+set path=C:\JavaSE\bin\%path%
+(%path% is used to append that particular path)
+
+Create a new Java file in Notepad:
+
+class FirstProgram
+{
+  public static void main(String [] args)
+  {
+    System.out.println("Hello World");
+  }
+}
+
+- Now save this file with any filename.
+- e.g. "Anything.java"
+- Remember to put the filename in double quotes.
+
+- Now run:
+javac programname.java
+java programname
+
+Now edit system environment variables.
+- Go to PATH and edit with C:\JavaSE\bin.
+- Also do with system variables.
+- Create New System Variable: JAVA_HOME.. give path as C:\JavaSE
+
+```````````````````````````````````````````````````````````````````````````
+
+Close project everytime when closing.
+Click on checkbox while deleting project.
+
+````````````````````````````````````````````````````````````````````````````
+
+Primitive Data Types are stored in heap (free store).
+Object Data Types are stored in stack (local store).
+
+PRIMITIVE DATATYPES (In-built, comes with language):
+- int (4 bytes)
+- long (8 bytes)
+- short (2 bytes)
+- float (4 bytes)
+- double (8 bytes)
+- char (2 bytes) (Because it supports UNICODE characters ranging from 0-65535)
+- byte (1 byte)
+- boolean (1 bit)
+
+OBJECT DATA TYPES (Created from classes)
+
+```````````````````````````````````````````````````````````````````````````````
+
+Whenever we mention keyword 'public' before class keyword, the file must be saved with classname.
+There should be only one public class in one Java program.
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+Java says to read input in the form of bytes.
+Array is treated as an object in Java.
+
+`````````````````````````````````````````````````````````````````````````````````````````````````````
+
+Syntax to create array in Java, this is for Primitive Datatype:
+
+int [] arr = new int [10];
+where, arr is Reference
+
+Primitive Data Types are not considered as objects in Java. Therefore, it is not fully OOP.
+Wrapper classes are used to convert those Primitive DataTypes to objects.
+e.g. Integer tmp = new integer (22);
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+COMMENTS
+- Single Line Comment
+- Multiline Comment aka Block
+- Documented Comment

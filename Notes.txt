@@ -90,6 +90,7 @@ java programname
 Now edit system environment variables.
 - Go to PATH and edit with C:\JavaSE\bin.
 - Also do with system variables.
+- Move this Java Path to top.
 - Create New System Variable: JAVA_HOME.. give path as C:\JavaSE
 
 ```````````````````````````````````````````````````````````````````````````

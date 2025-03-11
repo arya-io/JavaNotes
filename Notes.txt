@@ -142,3 +142,1762 @@ COMMENTS
 - Single Line Comment
 - Multiline Comment aka Block
 - Documented Comment
+
+---------------------------------------------------------------------------------------------------------
+
+1. Byte takes input as a string
+A byte in Java is an 8-bit(1 byte) signed data type. It can store values from -128 to 127.
+
+2. Allocating objects in heap using 'new' operator
+In Java, all objects are allocated in the heap memory using the new operator. For example, creating an instance of a class in the heap memory:
+Example:
+class Example { int a; }
+Example obj = new Example(); // Allocates memory for an object in heap
+
+3. Reference does not hold data but stores a memory address pointing to the object
+A reference variable in Java does not contain the actual object but stores the memory address of where the object resides in the heap memory.
+It acts as a pointer to the object.
+Example:
+Example anotherRef = obj; // anotherRef holds the reference to the object 'obj' points to
+
+4. Public class (keyword) files can be used anywhere in any project
+A class marked with the public keyword can be accessed from anywhere in the project or across packages.
+Without the public modifier, the class has package-private access, meaning it can only be accessed by other classes in the same package.
+
+5. Reference size is typically 4 bytes (32-bit JVM) or 8 bytes (64-bit JVM)
+The size of a reference in Java depends on the architecture of the JVM.
+In a 32-bit JVM, a reference typically occupies 4 bytes, while in a 64-bit JVM, the reference typically occupies 8 bytes.
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+Objects are stored in Heap while References and Primitive Data types are stored in Stack.
+In Java, objects are always stored in the heap memory, 
+whereas reference variables (which point to objects) and primitive data types (like int, char, float, etc.) are stored in the stack memory.
+
+```````````````````
+
+How to create an object?
+
+Example 1 (Two-step process):
+
+Calculator objCalculator;          // Step 1: Declare reference variable
+objCalculator = new Calculator();  // Step 2: Create an object and assign it to the reference
+
+Example 2 (Single line):
+
+Calculator objCalculator = new Calculator();  // Declare and create an object in a single line
+
+````````````````````````
+
+Debugging Method
+
+1. Set Breakpoint: Set a breakpoint where you want to pause the execution.
+2. Then go to Debug Method: Begin debugging in your IDE (e.g., Eclipse, IntelliJ).
+Keyboard Shortcuts in Debug Mode:
+
+F5: Step into – Enters into the method call to debug line by line.
+F6: Step over – Executes the current line and moves to the next one, skipping the method body if there is a method call.
+F8: Continue – Runs the program until it hits the next breakpoint.
+
+``````````````````````````````
+
+What are Arrays?
+
+An array is a data structure that stores multiple values of the same data type in a fixed-size sequential collection.
+The elements in an array are stored in contiguous memory locations and can be accessed using their index.
+
+------------------------------
+
+Fixed array with literal/pre-defined values:
+
+int[] arrName = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+This array has 10 elements, initialized with values from 1 to 10.
+
+````````````````````````````````````````````
+
+Fixed size array with no values:
+
+int[] arrFixed = new int[15];
+
+This creates an array of size 15.
+By default, all values in the array will be initialized to 0.
+
+`````````````````````````````````````````````
+
+Multi-Dimensional Array
+
+1. Matrix array (2D array):
+
+A matrix array is a multi-dimensional array where all rows have the same number of columns.
+
+Example:
+int[][] arr = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+
+It forms a matrix like this:
+1  2  3
+4  5  6
+7  8  9
+This is a 3x3 matrix with 3 rows and 3 columns.
+
+2. Jagged array:
+
+A jagged array is an array of arrays where each row can have a different number of columns. Example:
+
+int[][] arr = new int[3][];
+arr[0] = new int[3];  // First row with 3 columns
+arr[1] = new int[5];  // Second row with 5 columns
+arr[2] = new int[9];  // Third row with 9 columns
+
+It forms a structure like this:
+
+Row 1: [ _ _ _ ]     // 3 elements in row 1
+Row 2: [ _ _ _ _ _ ] // 5 elements in row 2
+Row 3: [ _ _ _ _ _ _ _ _ _ ] // 9 elements in row 3
+
+````````````````````````````````````````````````````````
+
+Static Variables in Java
+
+Static variables are allocated only once in the class memory, and the same memory and value are shared across every instance of that class.
+Instance variables, on the other hand, are specific to each object of the class and store different values for each instance.
+
+`````````````````````
+
+Default Values of Static Variables
+
+The default value of a static variable is 0 if it is a member of the class.
+However, if the static variable is local, you must explicitly initialize it because local variables don't have a default value.
+Example of a static variable:
+
+public static int variable = 9;  // This is hard-coded
+
+The value 9 is assigned to the static variable at the time of declaration. Every instance of the class shares this same value.
+
+```````````````````````````
+
+Modifying Static Variables Using a Static Block
+
+You can change the value of static variables using a static block.
+A static block is executed only once, when the class is first loaded, and it can only manipulate static variables or call static methods.
+Example of a static block:
+
+static {
+    variable = 20;  // Here, only static variables can be accessed or modified
+}
+
+In the above example, the static block changes the value of variable to 20.
+
+```````````````````````````````
+
+# Difference Between Static and Instance Variables
+
+| Feature                     | Static Variables                             | Instance Variables                            |
+|-----------------------------|----------------------------------------------|----------------------------------------------|
+| **Keyword**                  | Declared using the `static` keyword          | No `static` keyword used                     |
+| **Memory Allocation**        | Allocated once per class                     | Allocated separately for each object         |
+| **Shared Across Instances**  | Shared among all instances of the class      | Unique to each instance of the class         |
+| **Default Value**            | Default value is `0` (for numeric types)     | Default value depends on data type (e.g., `0`, `null`) |
+| **Access**                   | Can be accessed directly using the class name| Accessed through an object reference         |
+| **When Loaded**              | Loaded when the class is loaded              | Created when a new object is instantiated    |
+| **Use Case**                 | Useful for data shared by all instances (e.g., counters) | Useful for object-specific data (e.g., unique object properties) |
+| **Lifetime**                 | Exists as long as the class is loaded        | Exists as long as the object is alive        |
+| **Example**                  | `public static int staticVar = 10;`          | `public int instanceVar = 5;`                |
+
+``````````````````````````````````
+
+# Static, Instance Variables, and Constructors
+
+## 1. Constructor
+- A constructor is a special member function of a class that has the same name as the class.
+- It is automatically called when an object of that class is created.
+- Unlike methods, a constructor doesn't have a return type (not even `void`).
+- You cannot call multiple constructors during the creation of a single object. However, you can call multiple static and instance variables within the constructor or methods.
+
+Example:
+class Calculator {
+    int instanceVar;         // Instance variable
+    static int staticVar;     // Static variable
+
+    // Constructor - same name as the class
+    public Calculator(int instanceVar) {
+        this.instanceVar = instanceVar;  // Assign instance variable
+        staticVar++;                     // Modify static variable
+    }
+    
+    // Instance method
+    public void displayValues() {
+        System.out.println("Instance Variable: " + instanceVar);
+        System.out.println("Static Variable: " + staticVar);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating first object of Calculator class
+        Calculator calc1 = new Calculator(10);
+        calc1.displayValues();  // Output: Instance Variable: 10, Static Variable: 1
+        
+        // Creating second object of Calculator class
+        Calculator calc2 = new Calculator(20);
+        calc2.displayValues();  // Output: Instance Variable: 20, Static Variable: 2
+    }
+}
+
+Explanation:
+The constructor Calculator(int instanceVar) is called each time an object (calc1, calc2) is created.
+Instance variable (instanceVar) is specific to each object, so calc1 has 10, and calc2 has 20.
+Static variable (staticVar) is shared between all objects, and its value is incremented each time a new object is created.
+So, calc1 has 1, and after creating calc2, the value becomes 2.
+
+````````````````````````````````````
+
+Static and Instance Variables, Static and Instance Functions
+
+Static Variables (Class Variables)
+
+Static variables are also known as class variables.
+They are allocated once per class and exist regardless of the number of objects created.
+These variables are directly accessible using the class name and share the same copy across the entire class.
+Static variables are initialized when the class is loaded, either with a default value or a value specified by the programmer.
+
+Instance Variables
+
+Instance variables are allocated per object, meaning each object gets its own copy.
+These variables store individual values for each object and are initialized when an object is created.
+
+``````````````````````````````````````
+
+Class Loading and ByteCode Execution
+
+Every Java class, when compiled, gets converted into ByteCode.
+This ByteCode is loaded into memory by the Class Loader, which is part of the JVM.
+
+`````````````````````````````````````
+
+Class Loader Behavior:
+
+The class loader will load a class into memory in one of the following situations (whichever occurs first):
+
+a. The first time a static variable or static function of the class is accessed.
+b. The first time an object of the class is created.
+c. The class is explicitly loaded by the program using methods like Class.forName().
+
+``````````````````````````````````````
+
+Static Initialization and Class Loading Process:
+
+When a class is loaded into memory, all static variables are initialized, either with a default value or the value specified in the code.
+The static initialization block (if present) is executed, allowing the class to run code during its loading phase.
+Once the static variables are initialized and the static block is executed, the class is successfully loaded into program memory (ByteCode).
+
+`````````````````````````````````````
+
+Object Creation and Memory Allocation:
+
+When the programmer creates an object of a class, the JVM checks if the class has already been loaded:
+  If not loaded, the class loader loads the class into memory following the process mentioned above.
+  If the class is already loaded, the JVM:
+    Allocates memory for all instance variables of the class.
+    Initializes them with default or specified values.
+    Executes any initialization blocks associated with the class.
+    Calls the constructor to create the object.
+
+``````````````````````````````````````
+
+Key Points:
+
+Static variables and methods are shared across all objects of the class.
+Instance variables and methods are specific to each object.
+The class loader is responsible for loading classes into memory when needed, either by accessing static members or creating objects.
+Static initialization blocks are used to execute code at the time the class is loaded.
+
+``````````````````````````````````````
+
+Class Loader in Java: Primordial and Object Class Loaders
+
+The Class Loader in Java is responsible for loading Java classes into memory. It is categorized into two types:
+
+1. Primordial Class Loader:
+   - This class loader is responsible for loading pre-defined Java classes (e.g., core Java libraries such as `java.lang`, `java.util`, etc.).
+   - These classes are part of the Java Runtime Environment (JRE) and are loaded at the system level.
+   - The Primordial Class Loader is considered the bootstrap loader and is the first class loader that comes into play when the JVM starts.
+   
+2. Object Class Loader:
+   - This class loader is responsible for loading user-defined classes (i.e., classes written by the programmer).
+   - It deals with the application-specific classes that are created as part of the program and are not part of the core Java libraries.
+   - These classes are often loaded by custom class loaders defined within the application or by the default application class loader.
+   
+---
+
+Differentiation in Bytecode:
+- The Primordial and Object class loaders are differentiated by a special signature in the Bytecode.
+- The Primordial Class Loader uses specific markers in the Bytecode that identify classes as part of the core Java libraries.
+- The Object Class Loader uses a different set of markers to differentiate user-defined classes from predefined system classes.
+
+--------------------------------
+
+`==` Operator (Memory Address Comparison)
+
+- In Java, the `==` operator checks if two references point to the same memory location.
+- It does not compare the contents of the objects, but rather if the references themselves are identical.
+
+Example:
+String str1 = new String("Hello");
+String str2 = new String("Hello");
+
+if (str1 == str2) {
+    System.out.println("Both references point to the same memory location.");
+} else {
+    System.out.println("Different memory locations."); // This will be printed
+}
+
+if (str1.equals(str2)) {
+    System.out.println("Both objects are equal in content."); // This will be printed
+}
+```
+
+Explanation:
+- `str1 == str2` checks if `str1` and `str2` refer to the same memory location (they don’t).
+- `str1.equals(str2)` checks if the content of the two strings is the same, which it is.
+
+---
+
+`for-each` Loop
+
+- The `for-each` loop in Java is used to iterate over arrays or collections like `ArrayList`, `HashSet`, etc.
+- It simplifies iteration without needing an index.
+
+Example:
+int[] numbers = {1, 2, 3, 4, 5};
+
+for (int number : numbers) {
+    System.out.println(number);
+}
+```
+
+Explanation:
+- The `for-each` loop here iterates through each element in the `numbers` array and prints them out.
+  
+---
+
+`this` Operator
+
+- The `this` keyword refers to the current object within an instance method or constructor.
+- It is commonly used to differentiate between instance variables and parameters with the same name.
+
+Example:
+class Person {
+    String name;
+
+    // Constructor using 'this'
+    public Person(String name) {
+        this.name = name; // 'this.name' refers to the instance variable, 'name' refers to the parameter
+    }
+
+    public void printName() {
+        System.out.println("Name: " + this.name); // 'this' is optional here
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice");
+        person.printName(); // Output: Name: Alice
+    }
+}
+```
+
+Explanation:
+- The `this.name` refers to the **instance variable**, while `name` refers to the parameter passed to the constructor.
+  
+---
+
+Access Modifiers: `private`, `default`, `protected`, `public`
+
+#### 1. `private:
+- Members declared `private` are accessible only within the same class.
+
+Example:
+
+class Example {
+    private int privateVar = 10;
+
+    private void show() {
+        System.out.println("Private method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example ex = new Example();
+        // ex.privateVar and ex.show() are not accessible here because they are private.
+    }
+}
+```
+
+2. `default` (Package-Private):
+- If no access modifier is specified, the member is **accessible within the same package**.
+
+class Example {
+    int defaultVar = 20; // Default access
+
+    void display() {
+        System.out.println("Default access");
+    }
+}
+```
+
+3. `protected`:
+- Members declared `protected` are accessible **within the same package** and **by subclasses** in other packages.
+
+Example:
+
+class Parent {
+    protected int protectedVar = 30;
+}
+
+class Child extends Parent {
+    public void display() {
+        System.out.println(protectedVar); // Accessible due to inheritance
+    }
+}
+```
+
+4. `public`:
+- Members declared `public` are accessible **from anywhere**.
+
+Example:
+
+class Example {
+    public int publicVar = 40;
+
+    public void show() {
+        System.out.println("Public method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example ex = new Example();
+        System.out.println(ex.publicVar); // Accessible
+        ex.show(); // Accessible
+    }
+}
+```
+
+---
+
+Summary of Access Modifiers:
+
+| Modifier   | Class  | Package  | Subclass | World  |
+|------------|--------|----------|----------|--------|
+| **private**   | Yes    | No       | No       | No     |
+| **default**   | Yes    | Yes      | No       | No     |
+| **protected** | Yes    | Yes      | Yes      | No     |
+| **public**    | Yes    | Yes      | Yes      | Yes    |
+
+---
+
+Here’s an explanation of **Modularity**, **Abstraction**, and **Encapsulation** in Java, with examples to clarify each concept.
+
+---
+
+### 1. **Modularity**
+
+- **Modularity** refers to breaking down a program into **separate, independent modules** or components, each performing a specific function. It helps make code **easier to maintain, test, and reuse**.
+- In Java, modularity can be achieved by organizing code into **classes** and **methods**.
+- Java 9 introduced the **Java Module System** (Jigsaw Project), which allows for creating explicit **modules** and defining dependencies between them.
+
+#### Example:
+
+```java
+// Module A: Calculator.java
+package com.example.math;
+
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+
+// Module B: Main.java
+package com.example.main;
+
+import com.example.math.Calculator;
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(5, 3)); // Output: 8
+    }
+}
+```
+
+**Explanation**:
+- The `Calculator` class is in a separate **module** (or package), and its functionality can be reused by the `Main` class.
+- Modularity allows separating different functionalities (like math operations) into independent parts.
+
+---
+
+### 2. **Abstraction**
+
+- **Abstraction** refers to **hiding the complex implementation details** and exposing only the necessary parts to the user.
+- It allows you to **focus on what an object does** rather than how it does it.
+- In Java, abstraction can be achieved using **abstract classes** and **interfaces**.
+
+#### Example:
+
+```java
+// Abstract class
+abstract class Animal {
+    // Abstract method (doesn't have a body)
+    public abstract void sound();
+    
+    // Concrete method (has a body)
+    public void sleep() {
+        System.out.println("Sleeping...");
+    }
+}
+
+// Subclass (Concrete Class)
+class Dog extends Animal {
+    public void sound() {
+        System.out.println("Woof!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound(); // Output: Woof!
+        dog.sleep(); // Output: Sleeping...
+    }
+}
+```
+
+**Explanation**:
+- The **abstract class `Animal`** provides a blueprint with the `sound()` method, which **hides the specific implementation**.
+- The **`Dog` class** provides the actual implementation of `sound()`, while `sleep()` can be reused without changing the implementation.
+
+---
+
+### 3. **Encapsulation**
+
+- **Encapsulation** is the concept of **wrapping the data (variables)** and **methods** that manipulate the data into a single unit, typically a **class**.
+- It helps in **restricting access** to the class members using **access modifiers** (e.g., `private`, `public`).
+- Encapsulation promotes **data hiding** and protects object integrity by controlling access to variables.
+
+#### Example:
+
+```java
+class Person {
+    // Private variables, only accessible within the class
+    private String name;
+    private int age;
+
+    // Getter and setter methods to access the private variables
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if (age > 0) { // Adding validation
+            this.age = age;
+        } else {
+            System.out.println("Age must be positive.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person();
+        person.setName("Alice");
+        person.setAge(25);
+
+        System.out.println(person.getName()); // Output: Alice
+        System.out.println(person.getAge());  // Output: 25
+    }
+}
+```
+
+**Explanation**:
+- The variables `name` and `age` are **private**, meaning they are only accessible within the `Person` class.
+- The **getter and setter methods** allow controlled access to these variables, ensuring that the data is modified only in a controlled way (e.g., adding validation for age).
+- **Encapsulation** helps protect sensitive data from being directly accessed or modified from outside the class.
+
+---
+
+### Summary:
+
+- **Modularity**: Dividing the program into separate, independent parts (modules) to improve maintainability and reusability.
+- **Abstraction**: Hiding complex implementation details and exposing only the necessary features.
+- **Encapsulation**: Wrapping data and methods into a single class and restricting access to them through access modifiers (promotes data hiding).
+
+These principles form the foundation of **object-oriented programming** (OOP) in Java, leading to better-organized, more maintainable code.
+
+````````````````````````````````````````````````````````````````````
+
+### **Getters and Setters in Java**
+
+**Getters** and **Setters** are methods used to access and modify the private variables of a class. These methods are essential for **encapsulation**, which promotes **data hiding** and allows for controlled access to class variables.
+
+- **Getter**: A method that **retrieves** the value of a private variable.
+- **Setter**: A method that **sets** or updates the value of a private variable.
+
+#### **Why Use Getters and Setters?**
+1. **Encapsulation**: Keeps the internal implementation (i.e., private variables) hidden and provides controlled access through public methods.
+2. **Validation**: Setters allow adding validation logic before assigning a value to the variable.
+3. **Read-only / Write-only**: Getters can be provided without setters for read-only properties, and vice versa for write-only properties.
+
+---
+
+### **Syntax of Getter and Setter Methods**
+
+- **Getter Method**: 
+  - Syntax: `public <datatype> get<PropertyName>() { return property; }`
+  - It returns the value of the private variable.
+  
+- **Setter Method**: 
+  - Syntax: `public void set<PropertyName>(<datatype> value) { this.property = value; }`
+  - It allows the user to set the value of the private variable, often with validation.
+
+---
+
+### **Example of Getters and Setters**
+
+```java
+class Person {
+    // Private fields (encapsulated)
+    private String name;
+    private int age;
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+
+    // Setter for age with validation
+    public void setAge(int age) {
+        if (age > 0) {  // Validating that age is positive
+            this.age = age;
+        } else {
+            System.out.println("Age must be a positive number.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an instance of the Person class
+        Person person = new Person();
+
+        // Using setters to set values
+        person.setName("Alice");
+        person.setAge(25);
+
+        // Using getters to retrieve and display values
+        System.out.println("Name: " + person.getName()); // Output: Name: Alice
+        System.out.println("Age: " + person.getAge());   // Output: Age: 25
+
+        // Trying to set invalid age
+        person.setAge(-5); // Output: Age must be a positive number.
+    }
+}
+```
+
+---
+
+### **Explanation**:
+1. **Private Variables**: 
+   - `name` and `age` are declared `private` to ensure they are not directly accessible from outside the `Person` class.
+   
+2. **Getter Methods**:
+   - `getName()` returns the value of the `name` variable.
+   - `getAge()` returns the value of the `age` variable.
+   
+3. **Setter Methods**:
+   - `setName(String name)` allows setting a new value to the `name` variable.
+   - `setAge(int age)` assigns a value to `age` but includes validation logic to ensure the value is greater than zero.
+
+---
+
+### **Advantages of Getters and Setters**:
+
+1. **Data Validation**: Setters allow adding validation to prevent invalid values.
+   - Example: In the above example, the `setAge()` method ensures that the age cannot be negative.
+   
+2. **Control Access**: You can control how a variable is accessed and modified.
+   - Example: You could make the variable read-only by providing a getter without a setter.
+   
+3. **Maintainability**: Any changes to how data is accessed or modified can be done in one place without affecting the rest of the code.
+
+---
+
+### **Customizing Getters and Setters**
+
+You can also customize getters and setters as per your need. For example, adding a **read-only** property:
+
+#### Read-Only Property Example:
+```java
+class ReadOnlyPerson {
+    private String name;
+    
+    public ReadOnlyPerson(String name) {
+        this.name = name;
+    }
+
+    // Only a getter is provided, so 'name' is read-only
+    public String getName() {
+        return name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ReadOnlyPerson person = new ReadOnlyPerson("Bob");
+        System.out.println("Name: " + person.getName()); // Output: Name: Bob
+        // person.setName("Alice"); // Not allowed, no setter method available.
+    }
+}
+```
+
+---
+
+### **Conclusion:**
+- **Getters and Setters** provide a way to **access and modify** private class members in a controlled manner.
+- They promote **encapsulation** by hiding the internal implementation details and allowing only controlled access.
+
+``````````````````````````````````````````````````````````````````````````````````
+
+Here’s a detailed explanation of the key concepts you mentioned, with examples and additional clarity:
+
+---
+
+### **Abstraction is Generalization**
+
+**Abstraction** refers to focusing on the **essential characteristics** of an object rather than the specific details. It allows for **generalization** by hiding unnecessary complexities and exposing only what is important.
+
+- In Java, **abstract classes** and **interfaces** are used to implement abstraction.
+
+#### Example of Abstraction (Generalization):
+
+```java
+// Abstract class
+abstract class Animal {
+    // Abstract method
+    public abstract void sound();
+    
+    // Generalized method
+    public void sleep() {
+        System.out.println("Sleeping...");
+    }
+}
+
+// Concrete class (specific implementation)
+class Dog extends Animal {
+    public void sound() {
+        System.out.println("Barks!");
+    }
+}
+
+class Cat extends Animal {
+    public void sound() {
+        System.out.println("Meows!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sound(); // Output: Barks!
+
+        Animal cat = new Cat();
+        cat.sound(); // Output: Meows!
+    }
+}
+```
+
+**Explanation**:
+- The `Animal` class represents a **generalized concept** of an animal with the abstract `sound()` method.
+- Specific animals like `Dog` and `Cat` provide their specialized implementation of the `sound()` method.
+
+---
+
+### **Inheritance is Specialization**
+
+**Inheritance** in Java allows one class (child) to **specialize** by inheriting properties and behaviors (methods) from another class (parent). The child class can add its specific features or **override** existing ones, making it more specialized.
+
+#### Example of Inheritance (Specialization):
+
+```java
+class Vehicle {
+    public void move() {
+        System.out.println("The vehicle is moving.");
+    }
+}
+
+class Car extends Vehicle {
+    public void honk() {
+        System.out.println("The car is honking.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.move(); // Output: The vehicle is moving.
+        car.honk(); // Output: The car is honking.
+    }
+}
+```
+
+**Explanation**:
+- The `Car` class **inherits** the `move()` method from the `Vehicle` class.
+- The `Car` class also **specializes** by adding the `honk()` method.
+
+---
+
+### **Wrapper Classes: Making Java 100% Object-Oriented**
+
+Java is not considered **100% object-oriented** due to the presence of **primitive data types** (`int`, `char`, `double`, etc.). To overcome this, Java provides **wrapper classes** for each primitive type, allowing them to be treated as **objects**.
+
+#### Wrapper Classes:
+- `int` → `Integer`
+- `char` → `Character`
+- `double` → `Double`
+
+By using wrapper classes, Java allows primitive values to be used in object-oriented contexts (e.g., in collections like `ArrayList`).
+
+#### Example:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int primitiveValue = 5;
+
+        // Using a wrapper class to convert primitive to an object
+        Integer wrappedValue = Integer.valueOf(primitiveValue);
+
+        System.out.println("Primitive value: " + primitiveValue);   // Output: 5
+        System.out.println("Wrapped value: " + wrappedValue);       // Output: 5
+    }
+}
+```
+
+**Explanation**:
+- The primitive `int` is **wrapped** inside an `Integer` object, making it usable in object-oriented constructs like collections (`ArrayList<Integer>`, etc.).
+
+---
+
+### **Where Can Data Types Be Initialized?**
+
+In Java, variables can be initialized in different places:
+
+1. **Initialization during Declaration**:
+   - You can assign a value when declaring the variable.
+
+   ```java
+   int x = 10;
+   ```
+
+2. **Initialization in a Constructor**:
+   - Variables can be initialized in a class constructor.
+
+   ```java
+   class Person {
+       int age;
+
+       // Constructor
+       public Person(int age) {
+           this.age = age;
+       }
+   }
+   ```
+
+3. **Initialization in Methods**:
+   - Variables can also be initialized inside methods.
+
+   ```java
+   public void setAge(int age) {
+       this.age = age;
+   }
+   ```
+
+---
+
+### **Default Constructor (Zero-Arg Constructor)**
+
+- The **default constructor** (also called a **zero-argument constructor**) is provided by the **compiler** if no other constructor is explicitly defined in the class.
+- It does not take any arguments and simply assigns default values to instance variables.
+
+#### Example:
+
+```java
+class Person {
+    String name;
+    int age;
+
+    // Default constructor provided by the compiler
+    Person() {
+        // Empty constructor body (does nothing)
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person();  // Calls the default constructor
+        System.out.println(p.name);  // Output: null
+        System.out.println(p.age);   // Output: 0
+    }
+}
+```
+
+**Explanation**:
+- When no constructor is explicitly defined, the compiler provides a **default constructor** that assigns default values (`null` for objects, `0` for numeric types) to instance variables.
+
+---
+
+### **Constructors**
+
+A **constructor** is a special member function of a class that is called **every time an object is created**. It is used to initialize the object's state.
+
+- **Constructors** have the same name as the class and **do not have a return type**.
+- **Types of Constructors**:
+  1. **Default Constructor**: Provided by the compiler or explicitly declared with no arguments.
+  2. **Parameterized Constructor**: A constructor that takes parameters to initialize variables.
+
+#### Example of Parameterized Constructor:
+
+```java
+class Car {
+    String model;
+    int year;
+
+    // Parameterized constructor
+    public Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("Toyota", 2020);
+        System.out.println(car.model);  // Output: Toyota
+        System.out.println(car.year);   // Output: 2020
+    }
+}
+```
+
+**Explanation**:
+- The `Car` class has a **parameterized constructor** that allows the user to pass values when creating an object. These values are used to initialize the `model` and `year` variables.
+
+-------------------------------------------------------------------
+
+### **Inheritance in Java**
+
+Inheritance allows one class to **inherit** fields and methods from another class, enabling **reuse of code** and the creation of a more organized and modular system. It also promotes the concept of **specialization**, where the child class can extend or override the functionality of the parent class.
+
+---
+
+### **Types of Inheritance in Java**
+
+1. **Single Inheritance**
+2. **Multi-level Inheritance**
+3. **Multiple Inheritance (Supported through interfaces, not through classes)**
+4. **Hybrid Inheritance (Supported partially with interfaces)**
+
+---
+
+### **1. Single Inheritance**
+
+In **single inheritance**, one class (child) inherits from a single parent class.
+
+#### Example:
+
+```java
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();   // Inherited from Animal class
+        dog.bark();  // Defined in Dog class
+    }
+}
+```
+
+**Explanation**:
+- The `Dog` class inherits from the `Animal` class, gaining access to its `eat()` method.
+- This is **single inheritance**, where one class inherits from one parent.
+
+---
+
+### **2. Multi-Level Inheritance**
+
+In **multi-level inheritance**, a class is derived from another class, which is also derived from another class (forming a chain of inheritance).
+
+#### Example:
+
+```java
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Mammal extends Animal {
+    void walk() {
+        System.out.println("Walking...");
+    }
+}
+
+class Dog extends Mammal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();   // Inherited from Animal
+        dog.walk();  // Inherited from Mammal
+        dog.bark();  // Defined in Dog
+    }
+}
+```
+
+**Explanation**:
+- The `Dog` class inherits from `Mammal`, and `Mammal` inherits from `Animal`.
+- The class chain shows **multi-level inheritance**, where each class can access the methods of its parent and grandparent classes.
+
+---
+
+### **3. Multiple Inheritance (Not Supported for Classes, Only through Interfaces)**
+
+Java **does not support multiple inheritance** for classes to avoid ambiguity and complexity. However, it supports **multiple inheritance through interfaces**.
+
+#### Reason: **Ambiguity**
+
+Consider this situation where multiple classes have the same method, and a subclass inherits both of these classes:
+
+```java
+class A {
+    void display() {
+        System.out.println("Class A");
+    }
+}
+
+class B {
+    void display() {
+        System.out.println("Class B");
+    }
+}
+
+// If Java allowed multiple inheritance, this would create ambiguity in the subclass C
+// class C extends A, B { } // Which display() method would be inherited by C?
+```
+
+This would cause ambiguity as the compiler wouldn't know which version of the `display()` method to inherit. This is why **multiple inheritance** is not supported for classes.
+
+---
+
+
+### **4. Hybrid Inheritance (Supported through Interfaces, Not Classes)**
+
+**Hybrid inheritance** is a combination of more than one type of inheritance. Since **multiple inheritance** is not supported for classes (due to ambiguity), hybrid inheritance involving multiple classes is **not supported** in Java. However, **hybrid inheritance can be achieved with interfaces**.
+
+---
+
+### **All Classes in Java are Inherited from the `Object` Class**
+
+In Java, every class, whether defined by the user or a library class, implicitly inherits from the **`Object` class** if no other superclass is specified. This means that the `Object` class is the **parent** of all classes in Java.
+
+The `Object` class provides some essential methods like:
+
+- `toString()`
+- `equals()`
+- `hashCode()`
+- `clone()`
+- `getClass()`
+
+#### Example:
+
+```java
+class CustomClass {
+    int id;
+
+    public CustomClass(int id) {
+        this.id = id;
+    }
+
+    // Overriding the toString() method from the Object class
+    @Override
+    public String toString() {
+        return "CustomClass ID: " + id;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CustomClass obj = new CustomClass(101);
+        System.out.println(obj.toString());  // Output: CustomClass ID: 101
+    }
+}
+```
+
+**Explanation**:
+- Since `CustomClass` does not explicitly extend any class, it implicitly inherits from the `Object` class.
+- The `toString()` method is overridden to provide a custom string representation of the object.
+
+---
+
+### **Summary of Inheritance Types in Java**:
+
+| Inheritance Type      | Description                                        | Supported in Java |
+|-----------------------|----------------------------------------------------|-------------------|
+| **Single Inheritance** | One class inherits from a single parent class.     | Yes               |
+| **Multi-Level**        | A class inherits from another class, which itself inherits from a class (chain). | Yes |
+| **Multiple Inheritance** | A class inherits from multiple classes (creates ambiguity). | No (Only through interfaces) |
+| **Hybrid Inheritance** | Combination of different types of inheritance.     | Yes (through interfaces) |
+
+---
+
+### **Conclusion**:
+
+- Java supports **single** and **multi-level** inheritance with classes.
+- **Multiple inheritance** is not allowed with classes due to ambiguity, but it is supported through **interfaces**.
+- Every class in Java is a subclass of the **`Object` class**, which provides fundamental methods like `toString()` and `equals()`.
+
+```````````````````````````````````````````````````````````````
+
+### **Java Compiler Overview**
+
+The **compiler** in Java is responsible for transforming the code you write into bytecode that can be executed by the Java Virtual Machine (JVM). Along with this, the compiler performs several important checks and operations to ensure the correctness of your program, such as **type checking** and **type casting**.
+
+---
+
+### **Type Checking**
+
+**Type checking** ensures that **the type of the right-hand side (RHS) expression is compatible with the left-hand side (LHS)**, ensuring that only valid types are assigned to variables.
+
+#### Example:
+
+```java
+int number = 10; // Correct: RHS (int) can be assigned to LHS (int)
+
+String str = 10; // Error: Type mismatch, RHS (int) cannot be assigned to LHS (String)
+```
+
+The compiler performs **type checking** to prevent errors due to incompatible types. In Java, types must be compatible for assignment; otherwise, the program will not compile.
+
+---
+
+### **Type Casting**
+
+**Type casting** is a process of converting one data type into another.
+
+#### **Types of Type Casting**:
+
+1. **Implicit Casting (Widening)**: Automatically converting a smaller data type to a larger one.
+2. **Explicit Casting (Narrowing)**: Manually converting a larger data type to a smaller one.
+
+#### **Example:**
+
+```java
+// Implicit Casting (Widening) - automatic conversion from smaller to larger type
+int num = 100;
+double value = num; // int (num) is converted to double automatically (Implicit)
+
+// Explicit Casting (Narrowing) - requires manual conversion from larger to smaller type
+double decimalValue = 45.7;
+int intValue = (int) decimalValue; // decimalValue is explicitly cast to int
+```
+
+In the example above:
+- **Implicit Casting** happens when a smaller type is automatically converted to a larger one.
+- **Explicit Casting** happens when we convert a larger type to a smaller one using a cast operator `(type)`.
+
+---
+
+### **Upcasting and Downcasting**
+
+These are types of **object type casting** used in inheritance hierarchies when dealing with **base and derived classes**.
+
+#### **Upcasting**
+
+**Upcasting** refers to casting a derived class object (child) to a base class type (parent). This is done **implicitly** by Java because a child class object "is-a" parent class object.
+
+```java
+class Animal {
+    void makeSound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        Animal animal = dog; // Upcasting (implicit)
+        animal.makeSound();  // Output: Dog barks
+    }
+}
+```
+
+**Explanation**:
+- **Upcasting** is done **implicitly** because the `Dog` class is a subtype of `Animal`. The `animal` reference points to a `Dog` object.
+- The **base type (Animal)** can hold a reference to its **derived type (Dog)**.
+
+---
+
+#### **Downcasting**
+
+**Downcasting** is the opposite of upcasting, where you cast a base class reference (parent) back to a derived class (child). This requires **explicit casting** because the base class object **may not always be a derived class object**.
+
+```java
+class Animal {
+    void makeSound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Dog(); // Upcasting (implicit)
+        Dog dog = (Dog) animal;    // Downcasting (explicit)
+        dog.bark();                // Output: Dog barks
+    }
+}
+```
+
+**Explanation**:
+- **Downcasting** must be **explicitly** done using `(type)` because the compiler cannot guarantee that the base class reference refers to a derived class object.
+- If `animal` was not a `Dog`, downcasting would throw a **ClassCastException**.
+
+---
+
+### **Boxing and Unboxing**
+
+Boxing and unboxing deal with the **conversion between primitive types and their wrapper classes**.
+
+- **Boxing**: Converting a **primitive type** to its **wrapper class** (e.g., `int` to `Integer`).
+- **Unboxing**: Converting a **wrapper class** object to its **primitive type** (e.g., `Integer` to `int`).
+
+---
+
+#### **Boxing (Manual and Auto-Boxing)**
+
+```java
+// Manual Boxing
+int primitiveValue = 100;
+Integer boxedValue = Integer.valueOf(primitiveValue); // Boxing
+
+// Auto-Boxing (Automatic conversion)
+Integer autoBoxedValue = primitiveValue; // Auto-Boxing
+```
+
+- **Boxing**: The primitive value `100` is manually converted to the wrapper class `Integer`.
+- **Auto-Boxing**: The conversion happens automatically when assigning a primitive value to an `Integer` reference.
+
+---
+
+#### **Unboxing (Manual and Auto-Unboxing)**
+
+```java
+// Manual Unboxing
+Integer integerObject = new Integer(500);
+int unboxedValue = integerObject.intValue(); // Unboxing
+
+// Auto-Unboxing (Automatic conversion)
+int autoUnboxedValue = integerObject; // Auto-Unboxing
+```
+
+- **Unboxing**: The `Integer` object is manually converted back to a primitive `int`.
+- **Auto-Unboxing**: The unboxing happens automatically when assigning an `Integer` object to a primitive type.
+
+---
+
+### **Implicit Upcast**
+
+An **implicit upcast** occurs when a derived class object is automatically assigned to a base class reference without requiring explicit casting.
+
+#### Example:
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Cat cat = new Cat();
+        Animal animal = cat; // Implicit upcast from Cat to Animal
+        animal.sound();      // Output: Cat meows (calls the overridden method)
+    }
+}
+```
+
+**Explanation**:
+- Since `Cat` is a subclass of `Animal`, assigning a `Cat` object to an `Animal` reference is done implicitly without the need for casting.
+- The `sound()` method in `Cat` is called even though the reference is of type `Animal`.
+
+---
+
+### **Summary of Key Concepts**
+
+| Concept                | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| **Type Checking**       | Ensures the type on the RHS matches or is compatible with the type on the LHS. |
+| **Implicit Casting**    | Automatically converts smaller types to larger types.                         |
+| **Explicit Casting**    | Requires explicit conversion of larger types to smaller types.                |
+| **Upcasting**           | Casting a derived class object to a base class reference (Implicit).          |
+| **Downcasting**         | Casting a base class reference to a derived class object (Explicit).          |
+| **Boxing**              | Converting a primitive type to its corresponding wrapper class.               |
+| **Unboxing**            | Converting a wrapper class object to its corresponding primitive type.        |
+| **Auto-Boxing**         | Automatic conversion of a primitive type to a wrapper class.                  |
+| **Auto-Unboxing**       | Automatic conversion of a wrapper class to a primitive type.                  |
+| **Implicit Upcast**     | Automatic casting of a derived class to its base class without explicit cast. |
+
+---
+
+These key concepts, especially **type checking**, **casting**, and **boxing/unboxing**, play a crucial role in ensuring data type safety and flexibility in Java programming.
+
+--------------------------------------------------------------------------------
+
+### Virtual Function Table (V-Table) in Java
+
+- Java uses **Virtual Function Table (V-Table)** for implementing **runtime polymorphism**.  
+- When a method is marked `virtual` or overridden in Java, the JVM creates a V-Table to resolve the actual method to call at runtime.
+- **V-Table** holds the memory addresses of overridden methods for runtime lookup.
+
+**Key Points:**
+- Methods that are overridden in a subclass are dynamically bound using the V-Table.
+- This allows Java to support runtime polymorphism, where the method called depends on the actual object, not the reference type.
+
+---
+
+### Annotations in Java: `@Override`
+
+- The `@Override` annotation is used to indicate that a method is overriding a method from a superclass.
+- It ensures that the method signature matches the superclass method, and prevents mistakes.
+
+#### Example:
+
+```java
+class Base {
+    public void show() {
+        System.out.println("Base class show");
+    }
+}
+
+class Derived extends Base {
+    @Override
+    public void show() {
+        System.out.println("Derived class show");
+    }
+}
+```
+
+In the example above, the `@Override` annotation ensures that the `show()` method in `Derived` is indeed overriding the one in `Base`.
+
+---
+
+### **Abstract Class in Java**
+
+- An **abstract class** in Java is a class that cannot be instantiated directly. It is used to define common behavior that other classes will inherit.
+- **Abstract methods** are methods without a body and must be implemented by the subclass.
+- **Abstract classes** are similar to **pure virtual functions in C++**.
+
+#### Example:
+
+```java
+public abstract class Animal {
+    // Abstract method
+    public abstract void sound();
+    
+    // Concrete method
+    public void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+```
+
+In this example, `Animal` is an abstract class, and the `sound()` method is abstract, meaning it must be implemented by any subclass, like `Dog`.
+
+---
+
+### **Final Keyword in Java**
+
+The **final** keyword is used to apply restrictions on:
+- **Variables**: The value cannot be changed (like constants).
+- **Methods**: The method cannot be overridden by subclasses.
+- **Classes**: The class cannot be extended by other classes.
+
+#### Example:
+
+1. **Final Variable:**
+   ```java
+   public final int MAX_VALUE = 100; // Constant
+   ```
+
+2. **Final Method:**
+   ```java
+   public final void display() {
+       System.out.println("This method cannot be overridden");
+   }
+   ```
+
+3. **Final Class:**
+   ```java
+   public final class FinalClass {
+       // This class cannot be extended
+   }
+   ```
+
+**Key Points:**
+- **Final variables** cannot be reassigned.
+- **Final methods** cannot be overridden by subclasses.
+- **Final classes** cannot be subclassed.
+
+---
+
+### **Super Keyword**
+
+- The `super` keyword in Java refers to the **base class** and is used to access members of the base class.
+- It is often used to:
+  - **Call a superclass constructor**.
+  - **Access superclass methods or variables** that are hidden by the subclass.
+
+#### Example:
+
+```java
+class Animal {
+    public void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    public void sound() {
+        super.sound();  // Calls the method from the base class (Animal)
+        System.out.println("Dog barks");
+    }
+}
+```
+
+**Key Point**:
+- When used inside a constructor, `super()` **must be the first statement** to ensure the superclass constructor is invoked.
+
+---
+
+### **Final vs Constant in Java**
+
+- **Final variables**: Once initialized, their value cannot change.  
+  Example: `final int MAX = 10;`
+- **Constant variables**: Are final variables that are static, meaning they are shared across all instances of the class and are initialized only once.
+
+#### Example:
+
+```java
+public class Constants {
+    public static final double PI = 3.14159;  // Constant value
+}
+```
+
+- `PI` is a constant, and its value cannot be changed anywhere in the program.
+
+---
+
+### **Abstract Classes for Repeated Code**
+
+When certain functionalities or methods are repeated across multiple subclasses, an **abstract class** can be used to centralize the common code, and the subclasses can implement the abstract methods as per their specific behavior.
+
+#### Example:
+
+```java
+public abstract class Shape {
+    public abstract void draw(); // Abstract method
+    public void commonOperation() {
+        System.out.println("This is a common operation for all shapes.");
+    }
+}
+
+class Circle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Square extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Square");
+    }
+}
+```
+
+In this example, the `Shape` class contains a common operation, and each subclass implements the `draw()` method differently.
+
+---
+
+### **Summary of Concepts**
+
+| **Concept**                     | **Description**                                                                                                                                           |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Virtual Function Table (V-Table)** | Used for runtime method dispatch and supports polymorphism by holding addresses of overridden methods.                                                    |
+| **@Override**                    | Ensures that a method is correctly overriding a superclass method.                                                                                         |
+| **Abstract Class**               | Cannot be instantiated and contains abstract methods that must be implemented by subclasses. Similar to pure virtual functions in C++.                      |
+| **Final Keyword**                | Prevents modification of variables, methods, and classes (cannot change value, cannot override, cannot extend).                                             |
+| **Super Keyword**                | Refers to the superclass and is used to invoke methods or constructors of the base class. Must be the first statement when used inside a constructor.        |
+| **Abstract for Repeated Code**   | Abstract classes help to avoid repetition by centralizing common code, while specific functionality is defined in subclasses.                                |
+
+By using **abstract classes** and the **final** and **super** keywords, Java promotes **code reuse** and helps to ensure that certain behaviors cannot be altered or overridden.
+
+----------------------------------------------------------------------------------------------------------
+
+In a polymorphism interview, it's crucial to emphasize **overriding** and not confuse it with "overwriting" because the two terms have very different meanings, especially in the context of object-oriented programming (OOP) like Java.
+
+### **Overriding** vs. **Overwriting**:
+
+1. **Overriding** is an OOP concept, whereas **overwriting** refers to replacing data or content in memory, which is unrelated to method behavior in programming.
+
+2. **Overriding** happens in the context of **inheritance**. When a subclass provides its own implementation of a method that is already defined in its superclass, it's called method overriding. The new method overrides the behavior of the superclass method when invoked on an instance of the subclass.
+
+   - **Example** of overriding:
+     ```java
+     class Animal {
+         public void sound() {
+             System.out.println("Some generic animal sound");
+         }
+     }
+
+     class Dog extends Animal {
+         @Override
+         public void sound() {
+             System.out.println("Bark");
+         }
+     }
+
+     public class TestPolymorphism {
+         public static void main(String[] args) {
+             Animal a = new Dog();  // Animal reference, but Dog object
+             a.sound();  // Calls the overridden method in Dog, prints "Bark"
+         }
+     }
+     ```
+     Here, the `sound()` method in the `Dog` class **overrides** the `sound()` method in the `Animal` class. This is the key concept of **polymorphism**.
+
+   - Overriding allows dynamic method dispatch, where the correct method is chosen at runtime based on the actual object's type (in this case, `Dog`), even though the reference type is `Animal`.
+
+3. **Overwriting** refers to replacing data, usually in the context of memory or storage:
+   - **Overwriting** would involve replacing the content of a variable, a file, or a data structure with new data, typically resulting in the loss of the original data.
+   - Example:
+     ```java
+     int x = 10;
+     x = 20; // Overwrites the value of x
+     ```
+     Here, the original value `10` is replaced with `20`. This is **not** related to polymorphism or method overriding.
+
+### Why Focus on **Overriding** in an Interview?
+1. **Polymorphism and Dynamic Binding**: 
+   Overriding is central to polymorphism, a core principle in OOP, where a subclass can define its own unique behavior while still inheriting from the parent class. This allows for dynamic method dispatch, where the method to be executed is determined at runtime based on the object's actual type, not its reference type.
+
+2. **Interview Relevance**: 
+   When discussing polymorphism in an interview, you are primarily expected to demonstrate your understanding of how **overriding** enables subclasses to customize or extend base class behavior without altering the base class itself. This is crucial in designing flexible, maintainable, and reusable software.
+
+3. **Avoiding Miscommunication**: 
+   Using the term "overwriting" instead of "overriding" could cause confusion and reflect a misunderstanding of core OOP concepts. Overwriting implies replacing existing data, which is not the intended idea when explaining polymorphism. Overriding is about behavior, not memory or data replacement.
+
+In conclusion, overriding is a key aspect of polymorphism and OOP, and it's important to distinguish it from overwriting to avoid confusion and demonstrate a clear understanding of inheritance and dynamic method behavior.
+
+-------------------------------------------------------------------------------------------
+
+Exception-Handling: Basics, Role of Exceptions, Types**
+- **Basics**: Exceptions are unexpected events that occur during the execution of a program, disrupting the normal flow.
+- **Role**: Exceptions help in identifying and handling runtime errors without crashing the program.
+- **Types**: There are mainly two types of exceptions in Java:
+  1. **Checked Exceptions**: Known at compile time, must be handled (e.g., `IOException`).
+  2. **Unchecked Exceptions (Runtime)**: Occur during runtime (e.g., `NullPointerException`).
+
+### **Using try and catch, Multiple Catch, Nested try (throw, throws, finally)**
+- **try and catch**: `try` block contains code that may throw an exception, while `catch` block handles the exception.
+  ```java
+  try {
+      // risky code
+  } catch (ExceptionType e) {
+      // handling code
+  }
+  ```
+- **Multiple Catch**: You can catch multiple exceptions using separate `catch` blocks.
+- **Nested try**: A `try` block within another `try` block for handling specific exceptions in different parts of code.
+- **throw**: Manually throw an exception.
+- **throws**: Declares exceptions that a method might throw.
+- **finally**: A block that always executes, used for cleanup (e.g., closing resources).
+
+### **Built-in Exceptions, Runtime Exceptions, Checked Exceptions, Errors**
+- **Built-in Exceptions**: Standard Java exceptions like `ArithmeticException`, `ArrayIndexOutOfBoundsException`.
+- **Runtime Exceptions**: Unchecked exceptions that happen during execution (e.g., `NullPointerException`).
+- **Checked Exceptions**: Exceptions that must be caught or declared using `throws` (e.g., `FileNotFoundException`).
+- **Errors**: Critical problems that are not typically caught (e.g., `OutOfMemoryError`).
+
+### **Creating own Exception Subclasses**
+- You can create custom exceptions by extending the `Exception` or `RuntimeException` class.
+  ```java
+  class MyCustomException extends Exception {
+      public MyCustomException(String message) {
+          super(message);
+      }
+  }
+  ```
+------------------------------------------------------------
+
+// Custom Exception class
+class EmployeeNotFoundException extends Exception {
+    public EmployeeNotFoundException(String message) {
+        super(message);
+    }
+}
+
+// Employee class to hold employee data
+class Employee {
+    private int id;
+    private String name;
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+// Main class to check employee existence
+import java.util.HashMap;
+import java.util.Map;
+
+public class EmployeeManagement {
+    // Employee data structure (Map) to hold employee records
+    private static Map<Integer, Employee> employees = new HashMap<>();
+
+    public static void main(String[] args) {
+        // Adding some employee records to the map
+        employees.put(1, new Employee(1, "John"));
+        employees.put(2, new Employee(2, "Alice"));
+        employees.put(3, new Employee(3, "Bob"));
+
+        // Employee ID to search
+        int searchId = 4;
+
+        // Try-Catch block to handle EmployeeNotFoundException
+        try {
+            findEmployeeById(searchId);
+        } catch (EmployeeNotFoundException e) {
+            System.out.println("Exception Caught: " + e.getMessage());
+        } finally {
+            System.out.println("Search operation completed.");
+        }
+    }
+
+    // Method to find employee by ID
+    public static void findEmployeeById(int id) throws EmployeeNotFoundException {
+        // Check if employee exists in the map
+        if (!employees.containsKey(id)) {
+            // Throw custom exception if employee not found
+            throw new EmployeeNotFoundException("Employee with ID " + id + " does not exist.");
+        } else {
+            // Print employee details if found
+            Employee emp = employees.get(id);
+            System.out.println("Employee Found: " + emp.getName() + " (ID: " + emp.getId() + ")");
+        }
+    }
+}
+```
+
+### Explanation:
+1. **Custom Exception**: `EmployeeNotFoundException` is a user-defined exception that extends the `Exception` class. It takes a message that will be displayed when the exception is thrown.
+2. **Employee Class**: Simple class to hold employee data (`id` and `name`).
+3. **Employee Management**: 
+   - Uses a `HashMap` to simulate the employee data structure.
+   - The `findEmployeeById` method checks if the employee exists in the map. If not, it throws `EmployeeNotFoundException`.
+4. **try-catch-finally**:
+   - `try`: Calls `findEmployeeById` to search for the employee.
+   - `catch`: Catches the custom exception if thrown.
+   - `finally`: Ensures that the "Search operation completed." message is printed regardless of the result.
+
+### Output:
+If you search for an employee that doesn't exist (like `ID = 4`), the program will output:
+```
+Exception Caught: Employee with ID 4 does not exist.
+Search operation completed.
+```

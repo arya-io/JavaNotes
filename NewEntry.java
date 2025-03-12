@@ -1,107 +1,60 @@
-public class Entry {
+public class EntryPoint {
     public static void main(String[] args) {
-        MyCalendar cal = new MyCalendar();
-        cal.start();
-    }
+        System.out.println("Enter the day:");
+        int day = ConsoleInput.getInteger();
 
-    public static float readFloat() {
-        try {
-            String input = getInput();
-            return Float.parseFloat(input);
-        } catch (Exception e) {
-            System.out.println("Invalid input. Please enter a float value.");
+        System.out.println("Enter the month:");
+        int month = ConsoleInput.getInteger();
+
+        System.out.println("Enter the year:");
+        int year = ConsoleInput.getInteger();
+
+        MyDate dateObj = new MyDate();
+
+        if (day > 31 || day < 1 || month > 12 || month < 1 || year > 9999 || year < 1000) {
+            System.out.println("Invalid Date, please enter a valid date");
+        } else {
+            dateObj.setDate(day, month, year);
+            System.out.println("Current Date: " + dateObj.getDay() + "/" + dateObj.getMonth() + "/" + dateObj.getYear());
+
+            int option = 0;
+
+            do {
+                System.out.println("Select an option:");
+                System.out.println("1. Add Days");
+                System.out.println("2. Add Months");
+                System.out.println("3. Add Years");
+                System.out.println("4. Exit");
+
+                option = ConsoleInput.getInteger();
+
+                switch (option) {
+                    case 1:
+                        System.out.println("Enter days to add:");
+                        int addDays = ConsoleInput.getInteger();
+                        dateObj.addDays(addDays, day, month, year);
+                        break;
+
+                    case 2:
+                        System.out.println("Enter months to add:");
+                        int addMonths = ConsoleInput.getInteger();
+                        dateObj.addMonths(addMonths, day, month, year);
+                        break;
+
+                    case 3:
+                        System.out.println("Enter years to add:");
+                        int addYears = ConsoleInput.getInteger();
+                        dateObj.addYears(addYears, day, month, year);
+                        break;
+
+                    case 4:
+                        System.out.println("Exiting...");
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice, please try again.");
+                }
+            } while (option != 4);
         }
-        return -1;
-    }
-
-    public static int readInt() {
-        try {
-            String input = getInput();
-            return Integer.parseInt(input);
-        } catch (Exception e) {
-            System.out.println("Invalid input. Please enter an integer.");
-        }
-        return -1;
-    }
-
-    private static String getInput() {
-        try {
-            byte[] buffer = new byte[100];
-            int length = System.in.read(buffer);
-            String data = new String(buffer, 0, length).trim();
-            if (data.isEmpty()) {
-                System.out.println("Input cannot be empty.");
-                return "";
-            }
-            return data;
-        } catch (Exception e) {
-            System.out.println("Error reading input: " + e.getMessage());
-        }
-        return "";
-    }
-}
-
-MyCalendar.java
-
-package Class_Practice;
-
-public class MyCalendar {
-
-    public void start() {
-        System.out.print("Enter year: ");
-        int year = Entry.readInt();
-
-        System.out.print("Enter month (1-12): ");
-        int month = Entry.readInt();
-
-        System.out.print("Enter day: ");
-        int day = Entry.readInt();
-
-        System.out.println("Initial Date: " + day + "/" + month + "/" + year);
-
-        System.out.print("Enter days to add: ");
-        int addDays = Entry.readInt();
-        day += addDays;
-
-        while (day > getDaysInMonth(month, year)) {
-            day -= getDaysInMonth(month, year);
-            month++;
-            if (month > 12) {
-                month = 1;
-                year++;
-            }
-        }
-
-        System.out.print("Enter months to add: ");
-        int addMonths = Entry.readInt();
-        month += addMonths;
-
-        while (month > 12) {
-            month -= 12;
-            year++;
-        }
-
-        System.out.print("Enter years to add: ");
-        int addYears = Entry.readInt();
-        year += addYears;
-
-        System.out.println("Updated Date: " + day + "/" + month + "/" + year);
-    }
-
-    private int getDaysInMonth(int month, int year) {
-        if (month == 2) {
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-                return 29;
-            } else {
-                return 28;
-            }
-        }
-        if (month == 4 || month == 6 || month == 9 || month == 11) {
-            return 30;
-        }
-        return 31;
     }
 }
-
-
-

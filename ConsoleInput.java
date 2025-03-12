@@ -1,3 +1,4 @@
+package profiles;
 
 public class ConsoleInput {
 	
@@ -39,6 +40,15 @@ public class ConsoleInput {
 		int num = Integer.parseInt(objString);
 		
 		return num;
+	}
+	
+	public static char getChar() {
+		
+		String objString = getString();
+		
+		char character = objString.charAt(0);
+		
+		return character;
 	}
 
 }

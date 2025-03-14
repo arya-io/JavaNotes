@@ -1,147 +1,266 @@
-OBJECT ORIENTED PROGRAMMING:
-Language should support Abstraction, Encapsulation, Inheritance, Polymorphism, Modularity, Serialization, RTTI, Persistence, Concurrency.
+## **Object-Oriented Programming (OOP)**
 
-Static: Access Member of class without creating object.
+A language is considered Object-Oriented if it supports the following key features:
 
-Encapsulation supports Data Hiding.
+1. **Abstraction**: Hiding complex implementation details and showing only the necessary features of an object.
+2. **Encapsulation**: Wrapping data (variables) and code (methods) together into a single unit (class), which supports **data hiding**.
+3. **Inheritance**: Mechanism where a new class (child) inherits properties and behaviors (fields and methods) from an existing class (parent).
+4. **Polymorphism**: The ability of an object or method to behave differently in different contexts:
+   - **Static/Compile-Time Polymorphism** (Early Binding): The method to be called is determined at compile time. The output remains consistent across different executions.
+   - **Dynamic/Run-Time Polymorphism** (Late Binding): The method to be called is determined at runtime, allowing different outputs depending on the object type.
+5. **Modularity**: Dividing the program into smaller, manageable, and reusable modules (classes or packages), improving maintainability.
+6. **Serialization**: The process of converting an object and its metadata into a byte stream for storage or transmission.
+7. **Run-Time Type Identification (RTTI)**: The ability to determine the type of an object at runtime. For example, if a class hierarchy includes `Parrot -> Bird -> FlyingObject`, at runtime, the exact type (Parrot) can be identified.
+8. **Persistence**: The capability of an object to store its state (data) over time, typically by saving to a database or file.
+9. **Concurrency**: The ability to execute multiple threads simultaneously, enabling parallel execution (multithreading).
 
-The ability of any entity to work differently in different conditions is called Polymorphism.
+---
 
-Output is always same in static/compile time polymorphism, also known as early binding.
-Output changes in dynamic/runtime polymorphism, also known as late binding.
+### **Minor Features of OOP in Java:**
 
-Inheritance is inheriting properties and behaviour from parent to child.
+- **Persistence**: Refers to the ability of an object to persist (retain) its data even after the program terminates. This is typically achieved using files, databases, or other storage mechanisms.
+- **Serialization**: Involves saving the state of an object (along with its metadata) to a file, allowing it to be reconstructed later.
+- **Concurrency**: The capability to perform multiple operations at the same time through multithreading.
+- **Run-Time Type Identification (RTTI)**: A mechanism to identify an object's type at runtime, ensuring proper method execution based on the actual object.
 
-Modularity means dividing the code into multiple modules.
+---
 
-Minor Features of OOPs in Java:
+### **Comparing OOP in Different Languages**
 
-- Persistence: (means to persist, remain)
-Ability of an object to store the data.
+- **C and C++**:
+  - They support key OOP features like Concurrency and RTTI, but they are not considered 100% OOP because they allow global variables and functions.
+  - Example: `int temp` is a primitive in C/C++, but C++ can also have `temp.value()` where the variable shows behavior (through methods).
+  
+- **.NET**:
+  - .NET is considered 100% Object-Oriented because:
+    1. It supports all OOP features.
+    2. No global variables or functions are allowed.
+    3. Everything is treated as an object, even basic data types.
 
-- Serialization:
-Storing the data and its metadata into a file.
+---
 
-- Concurrency: (Simultaneous Behaviour, Multithreading)
+### **Static Keyword in Java**
 
-- Run-Time Type Identification (RTTI)
-(Parrot > Bird > Flying Object.. example)
-Ability of classes to identify the object at runtime.
+- **Static Members**: Methods or variables that belong to the class, rather than an instance. You can access them without creating an object of the class. Example: `ClassName.staticMethod()`.
 
-C and C++ supports concurrency, RTTI, therefore they are OOP Language.
+----------------------------------------------------------------------------
 
-.NET is 100% OOP Language, because
-1. Supports OOP features.
-2. Nothing can be global, no functions and no variables.
-3. Everything should be treated as object.
 
-C and C++ has `int temp`, but it has `temp.value()`, the variable also shows behaviour.
+### **API (Application Programming Interface)**
 
-What is API?
-- Interface used by programmers to build applications.
+- **Definition**: An API is an interface that allows software programs to communicate with each other. It provides predefined functions or methods that developers can use to interact with a software library, framework, or service, enabling them to build applications efficiently.
+- **Purpose**: It abstracts the internal workings of a system, allowing programmers to use functionality without knowing the details of the underlying code.
 
-Interpreter in Java is known as JVM (Java Virtual Machine).
+---
 
-Java was categorised into Java Standard Edition (JSE), Java Enterprise Edition (JEE) and Java Micro Edition (JME).
-The JSE defines the specifications of the Java Language along with providing support for developing consolde based, GUI based, network enabled,
-database enabled application. It is further classifiede into Java Development Kit (JDK) and Jave Runtime Environment (JRE).
+### **Interpreter in Java: JVM (Java Virtual Machine)**
 
-The JDK comprises of all the necessary tools and libraries that are required to DEVELOP, EXECUTE & DEBUG Java applications.
-The JRE comprises of the necessary tools and libraries that are required to execute a Java application on the underlined platform.
-Now it is known as Jakarta Runtime Environment as it is acquired by Eclipse now.
-The JEE defines the specifications to develop N-tier based or distributed application comprising of technologies such as servelets,
-Java Persistence API, Java Messaging Service, etc.
-The JME was used for developing applications for handheld devices, such as Mobile, Tablets, BlueRay Player, Set Top Boxes, etc.
+- **JVM (Java Virtual Machine)**: The interpreter that executes Java bytecode. It allows Java applications to run on any platform without modification, embodying Java's "Write Once, Run Anywhere" principle.
+
+---
+
+### **Java Editions**
+
+Java is categorized into three main editions, each serving different application development needs:
+
+1. **Java Standard Edition (JSE)**:
+   - **Description**: Defines the core Java language specifications and provides libraries for developing a wide range of applications, such as:
+     - **Console-based applications**
+     - **Graphical User Interface (GUI) applications**
+     - **Network-enabled applications**
+     - **Database-driven applications**
+   - **Components**:
+     - **Java Development Kit (JDK)**: A complete software development kit that includes the necessary tools and libraries to **develop, execute, and debug** Java applications.
+     - **Java Runtime Environment (JRE)**: A subset of the JDK, containing libraries and tools necessary to **execute** Java applications. It allows applications to run on different platforms without needing development tools.
+       - **Note**: The JRE is now part of the **Jakarta Runtime Environment**, as Java EE (Enterprise Edition) was acquired by the Eclipse Foundation.
+
+2. **Java Enterprise Edition (JEE)**:
+   - **Description**: Defines specifications for building **N-tier** (multi-layer) or **distributed applications**. JEE is used for large-scale enterprise applications that require scalability, security, and multi-tier architecture.
+   - **Technologies**:
+     - **Servlets**: Java classes used for handling HTTP requests and responses in web applications.
+     - **Java Persistence API (JPA)**: Used for object-relational mapping (ORM) and managing database operations.
+     - **Java Messaging Service (JMS)**: Provides messaging capabilities for communication between different components of a distributed system.
+
+3. **Java Micro Edition (JME)**:
+   - **Description**: Tailored for developing applications for resource-constrained devices, such as:
+     - Mobile phones
+     - Tablets
+     - Blu-ray players
+     - Set-top boxes
+   - JME is optimized for devices with limited memory and processing power and was widely used for mobile applications before the rise of modern mobile operating systems.
+
 
 ```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
-JAVA Installation:
 
-Download JDK version 8: jdk-8u441-windows-x64.exe
-Download Eclipse IDE for Java Developers
+### **Installing Java and Setting Up Eclipse IDE**
 
-While installing give the path as C:\JavaSE
+#### 1. **Download Java Development Kit (JDK)**
+- Download **JDK version 8**: `jdk-8u441-windows-x64.exe` from the [Oracle website](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html).
+- Download the **Eclipse IDE for Java Developers** from [eclipse.org](https://www.eclipse.org/downloads/).
 
-After installing Java, run in cmd:
-javac -version {for JDK}
-java -version {for JRE}
+#### 2. **Install JDK**
+- During installation, set the installation path to `C:\JavaSE` (or your preferred directory).
+  
+#### 3. **Verify Java Installation**
+After installing, verify the installation by running the following commands in the Command Prompt (CMD):
+- To check the **JDK version**, type:
+  ```cmd
+  javac -version
+  ```
+- To check the **JRE version**, type:
+  ```cmd
+  java -version
+  ```
 
-set path=C:\JavaSE\bin\%path%
-(%path% is used to append that particular path)
+#### 4. **Set the PATH Environment Variable**
+- Add the JDK bin directory to your system’s `PATH` variable to access Java commands from anywhere in the terminal. Run the following command in CMD:
+  ```cmd
+  set path=C:\JavaSE\bin;%path%
+  ```
+  - This appends the Java installation path to the system’s environment variable temporarily. To make it permanent, follow the steps below.
 
-Create a new Java file in Notepad:
+#### 5. **Create and Run Your First Java Program**
+- Open Notepad and write the following Java program:
 
-class FirstProgram
-{
-  public static void main(String [] args)
-  {
-    System.out.println("Hello World");
+  ```java
+  class FirstProgram {
+      public static void main(String [] args) {
+          System.out.println("Hello World");
+      }
   }
-}
+  ```
 
-- Now save this file with any filename.
-- e.g. "Anything.java"
-- Remember to put the filename in double quotes.
+- Save the file as `"FirstProgram.java"` in your working directory. Make sure to use double quotes when saving the file to avoid adding a `.txt` extension.
 
-- Now run:
-javac programname.java
-java programname
+- Compile and run the program in CMD:
+  1. Navigate to the directory where the Java file is saved.
+  2. Compile the program:
+     ```cmd
+     javac FirstProgram.java
+     ```
+  3. Run the program:
+     ```cmd
+     java FirstProgram
+     ```
 
-Now edit system environment variables.
-- Go to PATH and edit with C:\JavaSE\bin.
-- Also do with system variables.
-- Move this Java Path to top.
-- Create New System Variable: JAVA_HOME.. give path as C:\JavaSE
+#### 6. **Edit System Environment Variables**
+To make the Java installation accessible globally, set the environment variables:
 
-```````````````````````````````````````````````````````````````````````````
+- **Step 1**: Right-click on "This PC" or "My Computer" and select **Properties**.
+- **Step 2**: Click on **Advanced System Settings**.
+- **Step 3**: In the **System Properties** window, click on **Environment Variables**.
+  
+**Edit the `PATH` variable:**
+- Under **System Variables**, find the `Path` variable and click **Edit**.
+- Add a new entry: `C:\JavaSE\bin` and move it to the top of the list.
 
-Close project everytime when closing.
-Click on checkbox while deleting project.
+**Create a new system variable `JAVA_HOME`:**
+- Click **New** under System Variables.
+- Variable name: `JAVA_HOME`
+- Variable value: `C:\JavaSE`
+
+This ensures Java is set up correctly across your system.
+
+---
+
+### **Working with Eclipse**
+
+- **Close Project**: Always close the project in Eclipse before exiting to ensure resources are released properly.
+- **Delete Project**: When deleting a project in Eclipse, check the box for "Delete project contents on disk" if you want to remove it completely from the system.
+
 
 ````````````````````````````````````````````````````````````````````````````
 
-Primitive Data Types are stored in heap (free store).
-Object Data Types are stored in stack (local store).
 
-PRIMITIVE DATATYPES (In-built, comes with language):
-- int (4 bytes)
-- long (8 bytes)
-- short (2 bytes)
-- float (4 bytes)
-- double (8 bytes)
-- char (2 bytes) (Because it supports UNICODE characters ranging from 0-65535)
-- byte (1 byte)
-- boolean (1 bit)
+### **Memory Allocation in Java**
 
-OBJECT DATA TYPES (Created from classes)
+- **Primitive Data Types** are stored in the **stack** (local store), which is used for method execution and local variables.
+- **Object Data Types** are stored in the **heap** (free store), which is used for dynamic memory allocation.
 
-```````````````````````````````````````````````````````````````````````````````
+---
 
-Whenever we mention keyword 'public' before class keyword, the file must be saved with classname.
-There should be only one public class in one Java program.
+### **Primitive Data Types (In-built)**
 
-``````````````````````````````````````````````````````````````````````````````````````````````````````
+Primitive data types are the most basic data types available in Java, predefined by the language. They are **not objects**:
 
-Java says to read input in the form of bytes.
-Array is treated as an object in Java.
+| Data Type  | Size    | Description                                |
+|------------|---------|--------------------------------------------|
+| `int`      | 4 bytes | Integer values (whole numbers).            |
+| `long`     | 8 bytes | Larger integer values.                     |
+| `short`    | 2 bytes | Small integer values.                      |
+| `float`    | 4 bytes | Single-precision floating-point numbers.   |
+| `double`   | 8 bytes | Double-precision floating-point numbers.   |
+| `char`     | 2 bytes | Unicode characters (supports values 0-65535). |
+| `byte`     | 1 byte  | Smallest integer type, used for data streams. |
+| `boolean`  | 1 bit   | Represents true or false values.           |
 
-`````````````````````````````````````````````````````````````````````````````````````````````````````
+---
 
-Syntax to create array in Java, this is for Primitive Datatype:
+### **Object Data Types**
 
-int [] arr = new int [10];
-where, arr is Reference
+- **Object Data Types** are created from classes, including arrays and user-defined types. Unlike primitives, object data types reference memory in the heap.
 
-Primitive Data Types are not considered as objects in Java. Therefore, it is not fully OOP.
-Wrapper classes are used to convert those Primitive DataTypes to objects.
-e.g. Integer tmp = new integer (22);
+---
 
-``````````````````````````````````````````````````````````````````````````````````````````````````````
+### **Public Class Rule**
 
-COMMENTS
-- Single Line Comment
-- Multiline Comment aka Block
-- Documented Comment
+- If a class is declared as `public`, the file **must be saved** with the same name as the class.
+- **Only one public class** is allowed per Java file.
+
+---
+
+### **Input Handling in Java**
+
+- Java reads input in the form of bytes. Even for higher-level data types, input is processed as byte streams before being converted to the required format.
+
+---
+
+### **Arrays in Java**
+
+In Java, arrays are treated as **objects**. You can create an array of primitive data types or objects.
+
+**Syntax** for creating an array:
+```java
+int[] arr = new int[10];  // arr is a reference to an array of 10 integers
+```
+
+- Arrays in Java have a fixed size and are referenced by an object-like reference.
+
+---
+
+### **Java is Not Fully Object-Oriented**
+
+- Primitive data types are **not objects** in Java, which is why Java is not considered a 100% object-oriented language.
+- **Wrapper classes** are provided to convert primitive data types into objects. For example:
+  ```java
+  Integer tmp = new Integer(22);
+  ```
+  Here, `Integer` is a wrapper class that converts the primitive `int` to an object.
+
+---
+
+### **Comments in Java**
+
+- **Single-line comment**: Use `//` to comment on one line.
+  ```java
+  // This is a single-line comment
+  ```
+
+- **Multi-line comment** (also known as block comments): Use `/* ... */` to comment on multiple lines.
+  ```java
+  /* 
+     This is a 
+     multi-line comment
+  */
+  ```
+
+- **Documented comment**: Use `/** ... */` for comments that will be used to generate documentation using tools like Javadoc.
+  ```java
+  /**
+   * This is a documented comment
+   */
+  ```
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -1777,44 +1896,631 @@ In conclusion, overriding is a key aspect of polymorphism and OOP, and it's impo
 
 -------------------------------------------------------------------------------------------
 
-Exception-Handling: Basics, Role of Exceptions, Types**
-- **Basics**: Exceptions are unexpected events that occur during the execution of a program, disrupting the normal flow.
-- **Role**: Exceptions help in identifying and handling runtime errors without crashing the program.
-- **Types**: There are mainly two types of exceptions in Java:
-  1. **Checked Exceptions**: Known at compile time, must be handled (e.g., `IOException`).
-  2. **Unchecked Exceptions (Runtime)**: Occur during runtime (e.g., `NullPointerException`).
 
-### **Using try and catch, Multiple Catch, Nested try (throw, throws, finally)**
-- **try and catch**: `try` block contains code that may throw an exception, while `catch` block handles the exception.
+### **`instanceof` Operator**
+
+- **How `instanceof` works**:  
+  The `instanceof` operator checks whether an object is an instance of a specific class or a subclass. It returns `true` if the object is a direct instance or an instance of a subclass of the given type. It essentially matches the **memory address** that the **virtual table** (vtable) is pointing to for the object's class hierarchy.
+
+  - **Syntax**: 
+    ```java
+    if (object instanceof ClassName) {
+        // Code if true
+    }
+    ```
+
+- **Hierarchy Generalization**:  
+  When you move **up the class hierarchy**, you **generalize** more. For example, a `Dog` is an instance of both `Dog` and its superclass `Animal`, but an `Animal` may not always be a `Dog`.
+
+---
+
+### **`StringBuffer`**
+
+- **Why is `StringBuffer` used?**  
+  `StringBuffer` is used for creating and manipulating strings **dynamically**. Unlike `String`, `StringBuffer` objects can be modified (mutable). It is particularly useful for cases where **multiple string modifications** are required without creating new objects.
+
+  - Example:
+    ```java
+    StringBuffer obj = new StringBuffer("Hello");
+    obj.append(" World");
+    ```
+
+- **What happens if we print a `StringBuffer` object directly?**  
+  If you print an object without a proper `toString()` method, Java internally calls the default `toString()` method from the `Object` class, which prints the **class name** followed by the **hash code** of the object (something like `StringBuffer@15db9742`).
+
+- **`toString()` method in `StringBuffer`**:  
+  `StringBuffer` **overrides** the `toString()` method to return the **contents** of the string buffer. So, when you print a `StringBuffer` object, it returns the actual string value stored in it.
+
+  - **Do we need to use `toString()` when working with `StringBuffer`?**  
+    No, you don’t need to explicitly call `toString()` because it is **implicitly** called when the `StringBuffer` object is printed.
+
+    Example:
+    ```java
+    StringBuffer obj = new StringBuffer("Hello");
+    System.out.println(obj);  // No need to call toString() explicitly
+    ```
+
+---
+
+### **Packages in Java**
+
+- **Package Installation**:  
+  When creating a Java file, you can define which package it belongs to by adding a **package statement** at the **beginning** of the file:
+  ```java
+  package com.myapp;
+  ```
+
+- **`include` vs `import`**:
+  - Java uses **`import`** to include classes or entire packages for use in a program. 
+  - Unlike C or C++, where you use `#include` to include files, in Java, you use `import` to reference external classes from other packages.
+
+  - **Best practice**:  
+    Use `import packageName.*;` to include **all classes** from a package instead of specifying individual class names.
+
+- **Organizing imports in Eclipse**:  
+  - Shortcut: `Ctrl + Shift + O` to automatically **organize imports** in Eclipse, removing unused ones and adding required imports.
+
+---
+
+### **Access Specifiers in Java**
+
+Access specifiers define the **visibility** of classes, methods, and variables. They determine where these can be accessed in the program.
+
+#### **Types of Access Specifiers**:
+1. **Public**: Accessible from **anywhere** in the application.
+2. **Protected**: Accessible within the **same package** and by **subclasses** (even in different packages).
+3. **Default** (no modifier): Accessible only within the **same package**.
+4. **Private**: Accessible only within the **same class**.
+
+#### **Priority Criteria**:
+- **Protected** members are accessible in:
+  - The **same package**, or
+  - **Inherited classes** (even from different packages).
+
+#### **Table of Access Specifiers Accessibility**:
+
+| Access Specifier | Same Package | Different Package (Not Inherited) | Different Package (Inherited) |
+|------------------|--------------|------------------------------------|-------------------------------|
+| `public`         | Yes          | Yes                                | Yes                           |
+| `protected`      | Yes          | No                                 | Yes                           |
+| Default (no modifier) | Yes      | No                                 | No                            |
+| `private`        | No           | No                                 | No                            |
+
+---
+
+### **Refactoring in Eclipse**
+
+- To **rename** a package or a function:
+  - Right-click on the package or function in Eclipse.
+  - Select **Refactor** -> **Rename**.
+  - Eclipse will automatically reflect the changes in all related files.
+
+- **Ctrl + Shift + L**: Displays a **list of all shortcut commands** available in Eclipse IDE, making development faster and easier.
+
+-------------------------------------------------------------------------------------------------------
+
+### **Linked List**
+
+A **linked list** is a data structure consisting of nodes where each node contains two elements:
+1. **Data**: The actual value of the node.
+2. **Reference**: A pointer to the next node in the list.
+
+Each node points to the **next node** in the sequence, forming a chain. The last node's reference points to **null**, indicating the end of the list.
+
+#### **Textual Diagrammatic Representation** of a Singly Linked List:
+
+```
+[ Data | Next ] -> [ Data | Next ] -> [ Data | Next ] -> null
+```
+
+Example with integers:
+```
+[ 10 | * ] -> [ 20 | * ] -> [ 30 | * ] -> null
+```
+
+In this structure:
+- Each node stores a **data value** (e.g., `10`, `20`, `30`) and a **reference** (denoted as `*`) to the next node in the list.
+- The last node points to **null**, marking the end of the list.
+
+---
+
+### **Doubly Linked List**
+
+A **doubly linked list** is a type of linked list where each node contains **three components**:
+1. **Data**: The actual value stored in the node.
+2. **Next Reference**: A pointer to the next node in the list.
+3. **Previous Reference**: A pointer to the previous node in the list.
+
+In contrast to a **singly linked list**, where each node points only to the next node, a doubly linked list allows for **traversal in both directions** (forward and backward) because each node holds a reference to both the next and previous nodes.
+
+#### **Textual Diagrammatic Representation** of a Doubly Linked List:
+
+```
+null <- [ Prev | Data | Next ] <-> [ Prev | Data | Next ] <-> [ Prev | Data | Next ] -> null
+```
+
+Example with integers:
+```
+null <- [ null | 10 | * ] <-> [ * | 20 | * ] <-> [ * | 30 | null ] -> null
+```
+
+In this representation:
+- Each node contains:
+  - A **data value** (e.g., `10`, `20`, `30`).
+  - A **previous reference** (`Prev`) pointing to the previous node.
+  - A **next reference** (`Next`) pointing to the next node.
+- The **first node's previous reference** points to `null` since it is the beginning of the list.
+- The **last node's next reference** points to `null` indicating the end of the list.
+
+#### **Advantages of a Doubly Linked List**:
+1. **Bidirectional Traversal**: You can traverse the list in both directions (forward and backward), which is not possible with a singly linked list.
+2. **Efficient Node Deletion**: In a doubly linked list, deleting a node is easier as you have direct access to the previous node.
+
+#### **Example Code for Doubly Linked List Node in Java**:
+```java
+class Node {
+    int data;
+    Node next;
+    Node prev;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+```
+
+---
+
+### **Comparison: Singly Linked List vs. Doubly Linked List**
+
+| Feature                 | Singly Linked List                            | Doubly Linked List                             |
+|-------------------------|------------------------------------------------|------------------------------------------------|
+| **Number of References** | One (Next)                                     | Two (Next and Previous)                        |
+| **Traversal**            | Only forward traversal is possible             | Both forward and backward traversal is possible|
+| **Memory Usage**         | Less memory (since each node has only one reference) | More memory (due to two references per node)    |
+| **Node Deletion**        | Deletion requires more time (as previous node must be tracked manually) | Deletion is easier (as you have direct access to the previous node) |
+
+---
+
+### **Exception Handling in Java**
+
+In Java, exceptions are **unexpected runtime events** that can potentially disrupt the normal flow of a program. Java provides a robust **exception handling mechanism** that helps manage and respond to such runtime errors.
+
+- All exceptions are derived from the **`java.lang.Throwable`** class.
+  
+  **Two main categories of exceptions**:
+  1. **Checked Exceptions**
+  2. **Unchecked Exceptions**
+
+#### **Unchecked Exceptions**
+- **Unchecked exceptions** are not checked by the compiler, which means the programmer is not forced to handle them.
+- These exceptions are typically caused by programming errors such as incorrect logic.
+
+  Common unchecked exceptions:
+  - **`NullPointerException`**: Thrown when an application attempts to use `null` where an object is required.
+  - **`ClassCastException`**: Thrown when an object is forcibly cast to an incompatible class.
+  - **`ArrayIndexOutOfBoundsException`**: Thrown when accessing an array with an invalid index.
+
+#### **Checked Exceptions**
+- **Checked exceptions** must be either **caught** or **declared** in the method signature using `throws`. If not handled properly, the program will not compile.
+  
+  Common checked exceptions:
+  - **`IOException`**: Occurs when there is an I/O operation failure.
+  - **`SQLException`**: Occurs when there is a failure in database operations.
+  - **`ClassNotFoundException`**: Thrown when an application tries to load a class at runtime that cannot be found.
+
+---
+
+### **Java Exception Handling Mechanism**
+
+Java provides a structured way to handle exceptions using **five key commands**: `try`, `catch`, `throw`, `throws`, and `finally`.
+
+1. **try**:  
+   The `try` block encloses code that may potentially raise an exception. If an exception occurs, control is passed to the corresponding `catch` block.
+
+   Example:
+   ```java
+   try {
+       int result = 10 / 0;  // This will raise an exception
+   } 
+   ```
+
+2. **catch**:  
+   The `catch` block contains the code to handle exceptions. When an exception is raised in the `try` block, it is caught here, and the program can take appropriate action.
+
+   Example:
+   ```java
+   catch (ArithmeticException e) {
+       System.out.println("Cannot divide by zero!");
+   }
+   ```
+
+3. **throw**:  
+   The `throw` keyword is used to explicitly throw an exception from the code. This is useful when custom conditions trigger an exception that can be thrown using `throw`.
+
+   Example:
+   ```java
+   if (age < 0) {
+       throw new IllegalArgumentException("Age cannot be negative");
+   }
+   ```
+
+4. **throws**:  
+   The `throws` keyword is used in the **method declaration** to specify that a method can throw one or more exceptions. This serves as a warning to the calling code that an exception may occur.
+
+   Example:
+   ```java
+   public void readFile() throws IOException {
+       // Code to read a file
+   }
+   ```
+
+5. **finally**:  
+   The `finally` block contains code that will execute **whether an exception occurs or not**. It is often used for resource cleanup, such as closing files or database connections.
+
+   Example:
+   ```java
+   finally {
+       System.out.println("Cleanup code executes here");
+   }
+   ```
+
+#### **Example of Exception Handling:**
+```java
+public class Example {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3};
+            System.out.println(numbers[3]);  // ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index is out of bounds!");
+        } finally {
+            System.out.println("This block will always execute");
+        }
+    }
+}
+```
+
+---
+
+### **Summary of Exception Handling Commands:**
+
+- **`try`**: Wraps the code that may throw an exception.
+- **`catch`**: Catches and handles the exception thrown from the `try` block.
+- **`throw`**: Used to explicitly throw an exception.
+- **`throws`**: Declares that a method may throw exceptions.
+- **`finally`**: Executes code regardless of whether an exception was raised or not.
+
+----------------------------------------------------------------------------------------
+
+### **Refined Notes on Shortcuts and Exception Handling**
+
+---
+
+### **Shortcuts in Java Eclipse**
+
+1. **Alt + Shift + S, then R**:
+   - This shortcut in Eclipse is used to **generate getter and setter methods** for class fields (also known as properties).
+   - **Getters** retrieve the value of a field.
+   - **Setters** allow modification of the value of a field.
+
+   Example of Getter and Setter:
+   ```java
+   private int age;
+
+   public int getAge() {
+       return age;
+   }
+
+   public void setAge(int age) {
+       this.age = age;
+   }
+   ```
+
+2. **Alt + Shift + Z**:
+   - This shortcut is used to **surround code with a try-catch block** for **exception handling**.
+   - This allows you to quickly add exception handling around potentially error-prone code.
+
+---
+
+### **Exception Handling Hierarchy in Java**
+
+Java provides a hierarchy of classes that help in identifying the **nature of exceptions**. All exception-related classes are part of the **`java.lang`** package. The core structure of exception classes in Java is as follows:
+
+```
+java.lang.Throwable
+    |
+    +--> Error
+    |    (Unrecoverable, system-level errors)
+    |
+    +--> Exception
+         (Recoverable, application-level exceptions)
+```
+
+1. **Error**:
+   - **Errors** represent serious issues that occur during the execution of a program, typically related to the environment in which the application is running.
+   - These are **system-level issues** and are not intended to be caught or handled by typical applications.
+   - Examples:
+     - **`OutOfMemoryError`**: Raised when the JVM runs out of memory and cannot allocate more.
+     - **`StackOverflowError`**: Raised when the stack size is exceeded due to deep or infinite recursion.
+   - Even if an error is caught, **the programmer may not be able to take meaningful action** to recover from it.
+
+2. **Exception**:
+   - **Exceptions** are events that occur during the program's execution that can disrupt the normal flow of instructions.
+   - Exceptions are typically related to **application logic errors** and can be **caught** and **handled** by the program.
+
+#### **Types of Exceptions**:
+
+- **Checked Exceptions**:
+  - These exceptions are **checked at compile time**.
+  - The compiler forces the programmer to either handle these exceptions using a try-catch block or declare them in the method using the `throws` keyword.
+  - Examples:
+    - **`IOException`**: Occurs when there are I/O operation failures (e.g., reading a file that doesn't exist).
+    - **`SQLException`**: Occurs when there is an issue in database operations.
+  - **Important Note**: Any statement that raises a checked exception **must be handled**.
+
+  Example of checked exception handling:
   ```java
   try {
-      // risky code
-  } catch (ExceptionType e) {
-      // handling code
+      FileInputStream file = new FileInputStream("test.txt");
+  } catch (IOException e) {
+      System.out.println("File not found!");
   }
   ```
-- **Multiple Catch**: You can catch multiple exceptions using separate `catch` blocks.
-- **Nested try**: A `try` block within another `try` block for handling specific exceptions in different parts of code.
-- **throw**: Manually throw an exception.
-- **throws**: Declares exceptions that a method might throw.
-- **finally**: A block that always executes, used for cleanup (e.g., closing resources).
 
-### **Built-in Exceptions, Runtime Exceptions, Checked Exceptions, Errors**
-- **Built-in Exceptions**: Standard Java exceptions like `ArithmeticException`, `ArrayIndexOutOfBoundsException`.
-- **Runtime Exceptions**: Unchecked exceptions that happen during execution (e.g., `NullPointerException`).
-- **Checked Exceptions**: Exceptions that must be caught or declared using `throws` (e.g., `FileNotFoundException`).
-- **Errors**: Critical problems that are not typically caught (e.g., `OutOfMemoryError`).
+- **Unchecked Exceptions**:
+  - These exceptions are **not checked at compile time**, meaning the programmer is not forced to handle them.
+  - They typically arise due to programming errors such as **logic flaws** or **incorrect use of APIs**.
+  - Examples:
+    - **`NullPointerException`**: Thrown when an application attempts to use `null` where an object is required.
+    - **`ArrayIndexOutOfBoundsException`**: Thrown when an attempt is made to access an array with an invalid index.
+  - **Unchecked exceptions** may or may not be handled by the programmer.
 
-### **Creating own Exception Subclasses**
-- You can create custom exceptions by extending the `Exception` or `RuntimeException` class.
+  Example of unchecked exception:
   ```java
-  class MyCustomException extends Exception {
-      public MyCustomException(String message) {
-          super(message);
+  int[] arr = new int[3];
+  System.out.println(arr[5]); // This will throw ArrayIndexOutOfBoundsException
+  ```
+
+---
+
+### **Error vs. Exception**
+
+- **Error**:
+  - Errors represent issues that are typically out of the programmer's control.
+  - **Example**: An out-of-memory error caused by JVM failing to allocate memory, which the programmer can’t easily handle.
+
+- **Exception**:
+  - Exceptions represent issues that can be handled and recovered from by the programmer.
+  - **Example**: An `IOException` when trying to read a file that does not exist.
+
+---
+
+### **Summary of Exception Types**:
+
+| Type                 | Checked/Unchecked | When It Occurs                  | Can It Be Handled? |
+|----------------------|-------------------|---------------------------------|--------------------|
+| **Error**             | N/A               | System-level issues like out of memory, stack overflow | Hard to recover from |
+| **Checked Exception** | Checked           | Compile-time, must be handled by programmer | Yes |
+| **Unchecked Exception** | Unchecked        | Runtime, may or may not be handled by programmer | Yes |
+
+--------------------------------------------------------------------------------------
+
+### **Exception Handling in Java**
+
+- **`printStackTrace()`**: 
+  - A method that prints the **stack trace** of the exception to the standard error stream. This helps in debugging by showing the method call sequence that led to the exception.
+  
+- **Raising an Exception**: 
+  - Use the `throw` keyword to **raise an exception** when a certain condition is met.
+    ```java
+    throw new ArithmeticException("Cannot divide by zero");
+    ```
+
+- **Handling an Exception**: 
+  - Use the `catch` block to **handle exceptions** that arise from a `try` block.
+    ```java
+    try {
+        int result = 10 / 0;
+    } catch (ArithmeticException e) {
+        System.out.println("Caught an ArithmeticException: " + e.getMessage());
+    }
+    ```
+
+- **Exception Handling Order**: 
+  - **Always handle exceptions from the derived (specific) classes to the base (general) classes**. 
+  - Since `Exception` is the **base class**, more specific exceptions like `ArithmeticException` or `NullPointerException` should be handled before it.
+
+    Example:
+    ```java
+    try {
+        // code
+    } catch (NullPointerException e) {
+        // handle specific exception first
+    } catch (Exception e) {
+        // handle base exception next
+    }
+    ```
+
+- **`try-catch` and `try-finally` Blocks**: 
+  - A `try` block must be followed by either a `catch` block or a `finally` block (or both).
+  
+- **Nested try-catch**: 
+  - You can nest one `try-catch` block inside another. This allows for more granular control of exception handling.
+
+- **User-defined Exceptions**: 
+  - You can create custom exceptions by extending the `Exception` class.
+    ```java
+    class InvalidAgeException extends Exception {
+        public InvalidAgeException(String message) {
+            super(message);
+        }
+    }
+    ```
+
+---
+
+### **Generics in Java**
+
+- **Generics** (also known as **Templates** in C++) allow you to define **classes, interfaces, and methods** that can operate on **any type of data** without specifying the exact data type until the class is instantiated.
+  
+  Example of a Generic Class:
+  ```java
+  class Box<T> {
+      private T value;
+
+      public void set(T value) {
+          this.value = value;
+      }
+
+      public T get() {
+          return value;
       }
   }
   ```
-------------------------------------------------------------
 
+  - Here, `T` is a placeholder for the datatype, and when you create an instance, you specify the type:
+    ```java
+    Box<Integer> intBox = new Box<>();
+    intBox.set(123);
+    ```
 
+---
 
+### **File System in Java**
+
+- **Check if a Path is a File or Directory**:
+  - Use the `File` class in Java to check whether a path represents a file or a directory.
+    ```java
+    File file = new File("path/to/file");
+    
+    if (file.isDirectory()) {
+        System.out.println("It is a directory.");
+    } else if (file.isFile()) {
+        System.out.println("It is a file.");
+    }
+    ```
+
+---
+
+### **Input and Output Streams in Java**
+
+- **InputStream** and **OutputStream** are abstract classes in Java used to read and write data.
+  
+- **OutputStream**:
+  - Examples: **`FileOutputStream`**, **`DataOutputStream`**.
+  - Used to write data to files or other output destinations.
+
+- **InputStream**:
+  - Examples: **`FileInputStream`**, **`Scanner`** (for reading input).
+
+---
+
+### **Writing and Reading from a File**
+
+- **Writing to a File**:
+  ```java
+  FileOutputStream fos = new FileOutputStream("output.txt");
+  DataOutputStream dos = new DataOutputStream(fos);
+  
+  dos.writeInt(25);
+  dos.writeUTF("Hello World");
+  
+  dos.close();
+  fos.close();
+  ```
+
+- **Reading from a File**:
+  ```java
+  FileInputStream fis = new FileInputStream("output.txt");
+  DataInputStream dis = new DataInputStream(fis);
+  
+  int age = dis.readInt();
+  String message = dis.readUTF();
+  
+  dis.close();
+  fis.close();
+  ```
+
+- **Note**: The **sequence of reading and writing should be the same** to avoid errors. For example, if you write an `int` followed by a `String`, you should read the `int` first and then the `String`.
+
+---
+
+### **File Encryption and Decryption**
+
+1. **Encrypting a File**:
+   - The content of a file can be **encrypted** to make it unreadable by transforming the data using some algorithm.
+   
+   Example:
+   ```java
+   FileOutputStream fos = new FileOutputStream("first.txt");
+   CipherOutputStream cos = new CipherOutputStream(fos, cipher);  // cipher is a defined encryption algorithm
+   
+   cos.write("This is encrypted data".getBytes());
+   cos.close();
+   ```
+
+2. **Decrypting a File**:
+   - The **decryption** process transforms the data back to its original form.
+   
+   Example:
+   ```java
+   FileInputStream fis = new FileInputStream("first.txt");
+   CipherInputStream cis = new CipherInputStream(fis, cipher);  // cipher is a defined decryption algorithm
+   
+   int data;
+   while ((data = cis.read()) != -1) {
+       System.out.print((char) data);
+   }
+   cis.close();
+   ```
+
+---
+
+### **DataOutputStream and DataInputStream**
+
+- **DataOutputStream**: 
+  - Used to write **primitive data types** to a file in a platform-independent way.
+  
+- **Methods**:
+  - `writeUTF(String s)`: Writes a `String` in UTF format.
+  - `writeInt(int i)`: Writes an `int`.
+  - `writeFloat(float f)`: Writes a `float`.
+  - `writeBoolean(boolean b)`: Writes a `boolean`.
+
+- **DataInputStream**: 
+  - Used to read primitive data types from a file.
+
+- **Methods**:
+  - `readUTF()`: Reads a `String` in UTF format.
+  - `readInt()`: Reads an `int`.
+  - `readFloat()`: Reads a `float`.
+  - `readBoolean()`: Reads a `boolean`.
+
+---
+
+### **ObjectOutputStream and ObjectInputStream**
+
+- **ObjectOutputStream** and **ObjectInputStream** are used to write and read **objects** to and from streams (e.g., files).
+  
+- **Serializable Interface**:
+  - A class must implement the `Serializable` interface to allow its objects to be written to a stream.
+  - **Serializable** is a **marker interface**, which means it does not have any methods but indicates that the class can be serialized.
+  
+  Example:
+  ```java
+  class Person implements Serializable {
+      private String name;
+      private int age;
+
+      // Constructors, getters, setters
+  }
+
+  ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.dat"));
+  oos.writeObject(new Person("John", 30));
+  oos.close();
+  ```
+
+-----------------------------------------------------------------------------------------------

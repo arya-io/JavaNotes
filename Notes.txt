@@ -703,7 +703,6 @@ public class Main {
         ex.show(); // Accessible
     }
 }
-```
 
 ---
 
@@ -715,10 +714,6 @@ Summary of Access Modifiers:
 | **default**   | Yes    | Yes      | No       | No     |
 | **protected** | Yes    | Yes      | Yes      | No     |
 | **public**    | Yes    | Yes      | Yes      | Yes    |
-
----
-
-Here’s an explanation of **Modularity**, **Abstraction**, and **Encapsulation** in Java, with examples to clarify each concept.
 
 ---
 
@@ -1011,10 +1006,6 @@ public class Main {
 - They promote **encapsulation** by hiding the internal implementation details and allowing only controlled access.
 
 ``````````````````````````````````````````````````````````````````````````````````
-
-Here’s a detailed explanation of the key concepts you mentioned, with examples and additional clarity:
-
----
 
 ### **Abstraction is Generalization**
 
@@ -2195,9 +2186,6 @@ public class Example {
 
 ----------------------------------------------------------------------------------------
 
-### **Refined Notes on Shortcuts and Exception Handling**
-
----
 
 ### **Shortcuts in Java Eclipse**
 
@@ -2421,106 +2409,144 @@ java.lang.Throwable
 ### **Writing and Reading from a File**
 
 - **Writing to a File**:
-  ```java
-  FileOutputStream fos = new FileOutputStream("output.txt");
-  DataOutputStream dos = new DataOutputStream(fos);
-  
-  dos.writeInt(25);
-  dos.writeUTF("Hello World");
-  
-  dos.close();
-  fos.close();
-  ```
+    In Java, you can write data to a file using `FileOutputStream` and `DataOutputStream`. The `FileOutputStream` allows writing raw byte data, and `DataOutputStream` provides methods to write primitive data types (such as `int`, `float`, etc.) in a platform-independent way.
+
+    - **Code Breakdown**:
+      ```java
+      FileOutputStream fos = new FileOutputStream("output.txt"); // Opens or creates the file "output.txt"
+      DataOutputStream dos = new DataOutputStream(fos); // Wraps FileOutputStream to write primitive data types
+      ```
+      - `fos.write()`: writes data in raw byte format.
+      - `dos.writeInt(25)`: Writes an `int` value (25) to the file.
+      - `dos.writeUTF("Hello World")`: Writes a `String` in **UTF format** to the file.
+
+      Always remember to **close** both streams after writing to the file using `close()`, which releases system resources associated with the file:
+      ```java
+      dos.close();
+      fos.close();
+      ```
 
 - **Reading from a File**:
-  ```java
-  FileInputStream fis = new FileInputStream("output.txt");
-  DataInputStream dis = new DataInputStream(fis);
-  
-  int age = dis.readInt();
-  String message = dis.readUTF();
-  
-  dis.close();
-  fis.close();
-  ```
+    You can read data from a file using `FileInputStream` and `DataInputStream`. While `FileInputStream` reads the raw byte data, `DataInputStream` helps to read primitive data types in the same format as written.
 
-- **Note**: The **sequence of reading and writing should be the same** to avoid errors. For example, if you write an `int` followed by a `String`, you should read the `int` first and then the `String`.
+    - **Code Breakdown**:
+      ```java
+      FileInputStream fis = new FileInputStream("output.txt"); // Opens the file for reading
+      DataInputStream dis = new DataInputStream(fis); // Wraps FileInputStream to read primitive data types
+      ```
+      - `dis.readInt()`: Reads an `int` from the file (in this case, 25).
+      - `dis.readUTF()`: Reads a `String` in **UTF format** from the file (in this case, "Hello World").
+
+      As with writing, it is essential to close the streams to avoid resource leaks:
+      ```java
+      dis.close();
+      fis.close();
+      ```
+
+- **Important Note**: 
+    The **sequence of reading and writing must be the same**. This means that if you write an `int` followed by a `String`, you need to read the `int` first and then the `String`. If the order is mismatched, the reading process can result in errors.
 
 ---
 
 ### **File Encryption and Decryption**
 
 1. **Encrypting a File**:
-   - The content of a file can be **encrypted** to make it unreadable by transforming the data using some algorithm.
-   
-   Example:
-   ```java
-   FileOutputStream fos = new FileOutputStream("first.txt");
-   CipherOutputStream cos = new CipherOutputStream(fos, cipher);  // cipher is a defined encryption algorithm
-   
-   cos.write("This is encrypted data".getBytes());
-   cos.close();
-   ```
+    Encryption is the process of converting plain text into a secure format that cannot be understood without decryption. Java provides various classes for encryption, such as `CipherOutputStream` (a subclass of `FilterOutputStream`) which is used to encrypt the output stream.
+    
+    - **Code Explanation**:
+      ```java
+      FileOutputStream fos = new FileOutputStream("first.txt"); // Creates the file "first.txt"
+      CipherOutputStream cos = new CipherOutputStream(fos, cipher);  // cipher is the encryption algorithm
+      ```
+      - The `cipher` object defines the algorithm used for encryption (e.g., AES, DES, etc.). The actual encryption is done while writing data to the `cos` stream.
+      - `cos.write("This is encrypted data".getBytes())`: Converts the string into bytes and encrypts it before writing to the file.
+      - After encryption, always close the stream:
+      ```java
+      cos.close();
+      ```
 
 2. **Decrypting a File**:
-   - The **decryption** process transforms the data back to its original form.
-   
-   Example:
-   ```java
-   FileInputStream fis = new FileInputStream("first.txt");
-   CipherInputStream cis = new CipherInputStream(fis, cipher);  // cipher is a defined decryption algorithm
-   
-   int data;
-   while ((data = cis.read()) != -1) {
-       System.out.print((char) data);
-   }
-   cis.close();
-   ```
+    Decryption is the reverse process of encryption. The `CipherInputStream` class decrypts data as it is read from the input stream.
+
+    - **Code Explanation**:
+      ```java
+      FileInputStream fis = new FileInputStream("first.txt"); // Opens the encrypted file for reading
+      CipherInputStream cis = new CipherInputStream(fis, cipher);  // cipher is the decryption algorithm
+      ```
+      - The `cipher` object here is configured for decryption.
+      - The `cis.read()` method reads the decrypted data one byte at a time and prints it:
+      ```java
+      int data;
+      while ((data = cis.read()) != -1) {
+          System.out.print((char) data); // Cast the byte data to char and print it
+      }
+      cis.close();
+      ```
 
 ---
 
 ### **DataOutputStream and DataInputStream**
 
-- **DataOutputStream**: 
-  - Used to write **primitive data types** to a file in a platform-independent way.
-  
-- **Methods**:
-  - `writeUTF(String s)`: Writes a `String` in UTF format.
-  - `writeInt(int i)`: Writes an `int`.
-  - `writeFloat(float f)`: Writes a `float`.
-  - `writeBoolean(boolean b)`: Writes a `boolean`.
+- **DataOutputStream**:
+    This class allows writing primitive data types (such as `int`, `float`, etc.) to a file in a machine-independent way. It ensures that the data format is consistent, making the files portable between platforms.
+    
+    **Common Methods**:
+    - `writeUTF(String s)`: Writes a `String` in UTF format (more efficient than plain text).
+    - `writeInt(int i)`: Writes an `int` to the output stream.
+    - `writeFloat(float f)`: Writes a `float` to the output stream.
+    - `writeBoolean(boolean b)`: Writes a `boolean` value (`true` or `false`).
 
-- **DataInputStream**: 
-  - Used to read primitive data types from a file.
+- **DataInputStream**:
+    This class is used to read primitive data types from a file. The format of data written by `DataOutputStream` can be read back using `DataInputStream`.
 
-- **Methods**:
-  - `readUTF()`: Reads a `String` in UTF format.
-  - `readInt()`: Reads an `int`.
-  - `readFloat()`: Reads a `float`.
-  - `readBoolean()`: Reads a `boolean`.
+    **Common Methods**:
+    - `readUTF()`: Reads a `String` in UTF format.
+    - `readInt()`: Reads an `int`.
+    - `readFloat()`: Reads a `float`.
+    - `readBoolean()`: Reads a `boolean`.
 
 ---
 
 ### **ObjectOutputStream and ObjectInputStream**
 
-- **ObjectOutputStream** and **ObjectInputStream** are used to write and read **objects** to and from streams (e.g., files).
-  
-- **Serializable Interface**:
-  - A class must implement the `Serializable` interface to allow its objects to be written to a stream.
-  - **Serializable** is a **marker interface**, which means it does not have any methods but indicates that the class can be serialized.
-  
-  Example:
-  ```java
-  class Person implements Serializable {
-      private String name;
-      private int age;
+- **ObjectOutputStream**:
+    This class is used to serialize Java objects and write them to a file or any other output stream. **Serialization** is the process of converting an object’s state into a byte stream that can be saved or transmitted.
+    
+    - **Serializable Interface**: 
+      To serialize an object, its class must implement the `Serializable` interface, which is a marker interface (i.e., it does not define any methods). Implementing this interface tells the JVM that instances of the class can be serialized.
 
-      // Constructors, getters, setters
-  }
+    - **Example**:
+      ```java
+      class Person implements Serializable {
+          private String name;
+          private int age;
 
-  ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.dat"));
-  oos.writeObject(new Person("John", 30));
-  oos.close();
-  ```
+          // Constructors, getters, setters
+      }
+      ```
+      - Here, `Person` is a class that can be serialized because it implements `Serializable`.
 
------------------------------------------------------------------------------------------------
+      - **Writing Object**:
+        ```java
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.dat"));
+        oos.writeObject(new Person("John", 30)); // Writes the "Person" object to the file
+        oos.close();
+        ```
+
+- **ObjectInputStream**:
+    This class is used to deserialize objects that were previously serialized and stored in a file or another input stream. **Deserialization** is the process of reconstructing the object from the byte stream.
+
+    - **Reading Object**:
+      ```java
+      ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.dat"));
+      Person person = (Person) ois.readObject(); // Reads and casts the deserialized object
+      ois.close();
+      ```
+
+---
+
+### Key Points to Remember:
+- **Data streams**: `DataOutputStream` and `DataInputStream` work with primitive data types, ensuring that the data format is consistent across platforms.
+- **Object streams**: `ObjectOutputStream` and `ObjectInputStream` are used for writing and reading entire objects, provided the objects implement the `Serializable` interface.
+- **Encryption**: `CipherOutputStream` and `CipherInputStream` are used for secure file writing and reading using encryption/decryption algorithms.
+- Always ensure to **close** the streams after their operation to avoid resource leaks.
